@@ -1,9 +1,13 @@
+const { fetchUrl } = require("./fetchUrl");
+const { apis } = require("../config/apis");
+
+//función para parsear los items
 const parseItems = (items) => {
   const parseResponse = {
-    //TODO: Preguntar que es lo que significa esto
+    //TODO: Preguntar que es lo que significa Author
     author: {
-      name: "alonso",
-      lastname: "burgos",
+      name: "Alonso",
+      lastname: "Burgos",
     },
     categories: [],
     items: [],
@@ -29,13 +33,14 @@ const parseItems = (items) => {
   return parseResponse;
 };
 
-const parseItemDetail = (item) => {
+//función para parsear un item
+const parseItemDetail = async (item) => {
   const price = String(item.price).split(".");
   const parseResponse = {
-    //TODO: Preguntar que es lo que significa esto
+    //TODO: Preguntar que es lo que significa Author
     author: {
-      name: "alonso",
-      lastname: "burgos",
+      name: "Alonso",
+      lastname: "Burgos",
     },
     item: {
       id: item.id,
@@ -49,10 +54,37 @@ const parseItemDetail = (item) => {
       condition: item.condition,
       free_shipping: item.shipping.free_shipping,
       sold_quantity: item.sold_quantity,
+      path_from_root: await getCategoryPath(item.category_id),
     },
   };
 
   return parseResponse;
 };
 
-module.exports = { parseItems, parseItemDetail };
+//función para obtener los nombres de las categorias
+const getCategoryNames = async (categories) => {
+  const categoryNames = [];
+  await Promise.all(
+    categories.map(async (id) => {
+      const category = await fetchUrl(`${apis.getCategory}${id}`);
+      if (!categoryNames.includes(category.name)) {
+        categoryNames.push(category.name);
+      }
+    })
+  );
+  console.log(categoryNames);
+  return categoryNames;
+};
+
+//función para obtener el path de las categorias
+const getCategoryPath = async (category_id) => {
+  const categoryPath = [];
+  const category = await fetchUrl(`${apis.getCategory}${category_id}`);
+  return category.path_from_root;
+};
+module.exports = {
+  parseItems,
+  parseItemDetail,
+  getCategoryNames,
+  getCategoryPath,
+};

@@ -1,6 +1,10 @@
 const { httpError } = require("../helpers/handleError");
 const { fetchUrl } = require("../helpers/fetchUrl");
-const { parseItems, parseItemDetail } = require("../helpers/parseItems");
+const {
+  parseItems,
+  parseItemDetail,
+  getCategoryNames,
+} = require("../helpers/items");
 const { apis } = require("../config/apis");
 
 //obtener los items de la api de mercadolibre
@@ -8,13 +12,15 @@ const getItems = async (req, res) => {
   try {
     const items = await fetchUrl(`${apis.getItems}${req.query.search}&limit=4`);
     if (items.results.length > 0) {
-      const parseResponse = parseItems(items);
+      let parseResponse = parseItems(items);
+      const categoryNames = await getCategoryNames(parseResponse.categories);
+      parseResponse.categories = categoryNames;
       res.send({ data: parseResponse });
     } else {
       res.send({ data: [] });
     }
-    res.send({ data: parseResponse });
   } catch (error) {
+    console.log("error", error);
     httpError(res, error);
   }
 };
@@ -23,7 +29,7 @@ const getItems = async (req, res) => {
 const getItem = async (req, res) => {
   try {
     const item = await fetchUrl(`${apis.getItem}${req.params.id}`);
-    const parseResponse = parseItemDetail(item);
+    const parseResponse = await parseItemDetail(item);
     const itemDescription = await fetchUrl(
       `${apis.getItem}${req.params.id}/description`
     );
