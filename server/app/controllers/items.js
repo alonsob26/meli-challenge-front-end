@@ -20,7 +20,6 @@ const getItems = async (req, res) => {
       res.send({ data: [] });
     }
   } catch (error) {
-    console.log("error", error);
     httpError(res, error);
   }
 };
