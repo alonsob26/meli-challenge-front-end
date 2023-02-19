@@ -27,8 +27,7 @@ fs.readdirSync(pathRouter).filter((file) => {
 });
 
 router.get("*", (req, res) => {
-  res.status(404).send("Not found");
-  res.send({ error: "Not found" });
+  res.status(404).send({ message: "Not found" });
 });
 
 module.exports = router;

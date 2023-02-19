@@ -1,7 +1,9 @@
-const getItems = () => {};
+const getItems = (req, res) => {
+  res.send({ listItems: [1, 2, 3] });
+};
 
-const searchItems = () => {};
+const searchItems = (req, res) => {};
 
-const getItem = () => {};
+const getItem = (req, res) => {};
 
 module.exports = { getItems, getItem, searchItems };

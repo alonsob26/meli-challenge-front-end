@@ -14,6 +14,6 @@ app.use(cors());
 app.use("/api", require("./app/routes"));
 
 //iniciar servidor
-app.listen(3001, () => {
+app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
 });

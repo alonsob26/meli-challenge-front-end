@@ -4,7 +4,7 @@ const router = express.Router();
 const { getItems, getItem, searchItems } = require("../controllers/items");
 
 //items routes
-router.get("/items", getItems);
-router.get("/items/​:id", getItem);
+router.get("/", getItems);
+router.get("/​:id", getItem);
 
 module.exports = router;
