@@ -67,7 +67,6 @@ const getCategoryNames = async (categories) => {
   await Promise.all(
     categories.map(async (id) => {
       const category = await fetchUrl(`${apis.getCategory}${id}`);
-      //hacer push de un objeto con el id y el nombre de la categoria solo si no existe
       if (!categoryNames.some((category) => category.id === id)) {
         categoryNames.push({
           id: id,
