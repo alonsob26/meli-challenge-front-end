@@ -1,7 +1,6 @@
 // descripcion: este helper se encarga de manejar los errores de las peticiones http
-const hhtpError = (res, error) => {
-  console.log(error);
-  res.status(500).send({ message: error.message });
+const httpError = (res, error) => {
+  res.status(500).send({ message: "Algo salió mal" });
 };
 
-module.exports = { hhtpError };
+module.exports = { httpError };
