@@ -10,6 +10,7 @@ const removeExtension = (file) => {
   return file.split(".").shift();
 };
 
+//esta funcion carga las rutas de cada archivo dentro de routes automaticamente
 //leer los archivos de la carpeta y filtrar los que no queremos
 fs.readdirSync(pathRouter).filter((file) => {
   //obtener el nombre del archivo sin la extension
@@ -26,6 +27,7 @@ fs.readdirSync(pathRouter).filter((file) => {
   }
 });
 
+//regresar un not found si no encuentra la ruta
 router.get("*", (req, res) => {
   res.status(404).send({ message: "Not found" });
 });
