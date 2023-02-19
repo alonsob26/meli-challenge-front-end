@@ -1,10 +1,12 @@
 const { httpError } = require("../helpers/handleError");
+const { fetchUrl } = require("../helpers/fetchUrl");
+const { apis } = require("../config/apis");
 
 //obtener los items de la api de mercadolibre
-const getItems = (req, res) => {
-  //TODO: call https://api.mercadolibre.com/sites/MLA/search?q=​:query console.log(req.query);
+const getItems = async (req, res) => {
   try {
-    res.send({ listItems: [1, 2, 3] });
+    const items = await fetchUrl(`${apis.getItems}${req.query.search}&limit=4`);
+    res.send({ data: items });
   } catch (error) {
     httpError(res, error);
   }
