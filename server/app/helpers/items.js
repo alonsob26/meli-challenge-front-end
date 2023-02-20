@@ -67,12 +67,14 @@ const getCategoryNames = async (categories) => {
   await Promise.all(
     categories.map(async (id) => {
       const category = await fetchUrl(`${apis.getCategory}${id}`);
-      if (!categoryNames.includes(category.name)) {
-        categoryNames.push(category.name);
+      if (!categoryNames.some((category) => category.id === id)) {
+        categoryNames.push({
+          id: id,
+          name: category.name,
+        });
       }
     })
   );
-  console.log(categoryNames);
   return categoryNames;
 };
 

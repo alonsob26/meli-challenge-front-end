@@ -10,7 +10,9 @@ const { apis } = require("../config/apis");
 //obtener los items de la api de mercadolibre
 const getItems = async (req, res) => {
   try {
-    const items = await fetchUrl(`${apis.getItems}${req.query.search}&limit=4`);
+    const items = await fetchUrl(
+      `${apis.getItems}${req.query.search}&category=${req.query.category}&limit=4`
+    );
     if (items.results.length > 0) {
       let parseResponse = parseItems(items);
       const categoryNames = await getCategoryNames(parseResponse.categories);
@@ -20,7 +22,6 @@ const getItems = async (req, res) => {
       res.send({ data: [] });
     }
   } catch (error) {
-    console.log("error", error);
     httpError(res, error);
   }
 };
