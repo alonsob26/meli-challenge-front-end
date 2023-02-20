@@ -11,15 +11,15 @@ const { apis } = require("../config/apis");
 const getItems = async (req, res) => {
   try {
     const items = await fetchUrl(
-      `${apis.getItems}${req.query.search}&category=${req.query.category}&limit=4`
+      `${apis.getItems}${req.query.q}&category=${req.query.category}&limit=4`
     );
     if (items.results.length > 0) {
       let parseResponse = parseItems(items);
       const categoryNames = await getCategoryNames(parseResponse.categories);
       parseResponse.categories = categoryNames;
-      res.send({ data: parseResponse });
+      res.status(200).send({ status: 200, data: parseResponse });
     } else {
-      res.send({ data: [] });
+      res.status(200).send({ status: 200, data: [] });
     }
   } catch (error) {
     httpError(res, error);
@@ -35,7 +35,7 @@ const getItem = async (req, res) => {
       `${apis.getItem}${req.params.id}/description`
     );
     (parseResponse.item.description = itemDescription.plain_text),
-      res.send({ data: parseResponse });
+      res.status(200).send({ status: 200, data: parseResponse });
   } catch (error) {
     httpError(res, error);
   }
