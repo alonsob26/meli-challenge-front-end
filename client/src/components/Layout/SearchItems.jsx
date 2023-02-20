@@ -22,7 +22,7 @@ export const Search = () => {
       <input
         className="searchItems_input"
         placeholder="Nunca dejes de buscar"
-        spellcheck="false"
+        spellCheck="false"
       />
       <button className="searchItems_button">
         <img src={ic_Search} alt="search_logo" />

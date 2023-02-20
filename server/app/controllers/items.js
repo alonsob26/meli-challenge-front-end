@@ -11,7 +11,7 @@ const { apis } = require("../config/apis");
 const getItems = async (req, res) => {
   try {
     const items = await fetchUrl(
-      `${apis.getItems}${req.query.search}&category=${req.query.category}&limit=4`
+      `${apis.getItems}${req.query.q}&category=${req.query.category}&limit=4`
     );
     if (items.results.length > 0) {
       let parseResponse = parseItems(items);
