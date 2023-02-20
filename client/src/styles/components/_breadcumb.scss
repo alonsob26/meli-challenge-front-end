@@ -3,7 +3,16 @@
   display: flex;
   justify-content: flex-start;
   margin-top: 16px;
-  margin-bottom: 16px;
   font-size: 14px;
   color: $gray;
+}
+
+.breadcumb_link {
+  color: $gray;
+  text-decoration: none;
+}
+
+.breadcumb_separator {
+  margin-right: 6px;
+  margin-left: 6px;
 }

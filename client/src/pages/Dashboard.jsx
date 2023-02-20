@@ -1,18 +1,16 @@
-import { useEffect } from "react";
 import { Breadcumb } from "../components/Layout/Breadcumb";
-import { searchItems } from "../apis/items";
+import { useLoaderData } from "react-router-dom";
+import { Breadcumbs } from "../components/Layout/Breadcumbs";
 
 export const Dashboard = () => {
-  useEffect(() => {
-    async function fetchData() {
-      const response = await searchItems("Apple");
-      console.log(response);
-    }
-    fetchData();
-  }, []);
+  const items = useLoaderData();
+  let categories = [];
+  if (items.data && items.data.categories.length > 0) {
+    categories = items.data.categories;
+  }
   return (
     <>
-      <Breadcumb id={1} category={"Category Name"} />
+      {categories.length > 0 && <Breadcumbs categories={categories} />}
       <div className="page_container">DASHBOARD</div>
     </>
   );
