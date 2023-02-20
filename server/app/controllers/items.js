@@ -17,9 +17,9 @@ const getItems = async (req, res) => {
       let parseResponse = parseItems(items);
       const categoryNames = await getCategoryNames(parseResponse.categories);
       parseResponse.categories = categoryNames;
-      res.send({ data: parseResponse });
+      res.status(200).send({ status: 200, data: parseResponse });
     } else {
-      res.send({ data: [] });
+      res.status(200).send({ status: 200, data: [] });
     }
   } catch (error) {
     httpError(res, error);
@@ -35,7 +35,7 @@ const getItem = async (req, res) => {
       `${apis.getItem}${req.params.id}/description`
     );
     (parseResponse.item.description = itemDescription.plain_text),
-      res.send({ data: parseResponse });
+      res.status(200).send({ status: 200, data: parseResponse });
   } catch (error) {
     httpError(res, error);
   }
