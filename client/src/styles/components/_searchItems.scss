@@ -1,0 +1,38 @@
+.searchItems_form {
+  width: 100%;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  background-color: white;
+}
+.searchItems_input {
+  background-color: transparent;
+  flex: 1;
+  border: 0;
+  height: 36px;
+  font-size: 16px;
+  padding-left: 14px;
+  color: $black;
+  &::placeholder {
+    color: $lightGray;
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+.searchItems_button {
+  width: 42px;
+  height: 38px;
+  border: 0;
+  border-radius: 0 4px 4px 0;
+  > img {
+    width: 18px;
+    margin-top: 3px;
+  }
+}
+
+.searchItems_icon {
+  width: 30px;
+}
