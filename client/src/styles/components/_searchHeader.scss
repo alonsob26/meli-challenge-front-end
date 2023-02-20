@@ -1,0 +1,23 @@
+.searchHeader_container {
+  background-color: $yellow;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  width: 100%;
+  height: 56px;
+
+  > div {
+    display: flex;
+    flex: auto;
+    max-width: 980px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+}
+
+.searchHeader_logoML {
+  width: 53px;
+  margin-right: 26px;
+}
