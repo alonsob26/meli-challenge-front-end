@@ -1,5 +1,4 @@
 import { useParams } from "react-router-dom";
-import { Breadcumb } from "../components/Layout/Breadcumb";
 
 export const ItemDetal = () => {
   const { id } = useParams();
@@ -7,7 +6,7 @@ export const ItemDetal = () => {
   return (
     <>
       {/* {categories.length > 0 && <Breadcumbs categories={categories} />} */}
-      <div className="page_container">ITEM DETAIL</div>
+      <div className="detail_container">ITEM DETAIL</div>
     </>
   );
 };

@@ -3,8 +3,13 @@
   display: flex;
   justify-content: flex-start;
   margin-top: 16px;
-  font-size: 14px;
+  font-size: 0.875rem;
   color: $gray;
+  a:last-of-type {
+    span:last-of-type {
+      display: none;
+    }
+  }
 }
 
 .breadcumb_link {

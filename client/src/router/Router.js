@@ -2,7 +2,6 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
-  useParams,
 } from "react-router-dom";
 import { getItems } from "../apis/items";
 import { Layout } from "../components/Layout/Layout";
