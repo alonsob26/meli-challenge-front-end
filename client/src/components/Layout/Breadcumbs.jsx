@@ -2,6 +2,10 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 export const Breadcumbs = ({ categories }) => {
+  //eliminar elementos de categories excepto los primeros 4
+  if (categories.length > 4) {
+    categories.splice(4, categories.length - 4);
+  }
   return (
     <div className="breadcumb_container">
       {categories.length > 0 &&

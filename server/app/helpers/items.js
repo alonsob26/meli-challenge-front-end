@@ -20,8 +20,8 @@ const parseItems = (items) => {
       title: item.title,
       price: {
         currency: item.currency_id,
-        amount: Number(price.shift()),
-        decimals: price.length > 1 ? Number(price.pop()) : 0,
+        amount: Number(price[0]),
+        decimals: price.length > 1 ? Number(price[1]) : 0,
       },
       picture: item.thumbnail.replace("-I", "-O"),
       condition: item.condition,

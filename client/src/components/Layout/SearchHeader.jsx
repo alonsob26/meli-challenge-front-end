@@ -5,7 +5,9 @@ export const Header = () => {
   return (
     <div className="searchHeader_container">
       <div>
-        <img className="searchHeader_logoML" src={logo_ml} alt="logo_ml" />
+        <a href="https://www.mercadolibre.com/">
+          <img className="searchHeader_logoML" src={logo_ml} alt="logo_ml" />{" "}
+        </a>
         <Search />
       </div>
     </div>
