@@ -32,7 +32,11 @@ export const Search = () => {
         spellCheck="false"
       />
       <button className="searchItems_button">
-        <img src={ic_Search} alt="search_logo" />
+        <img
+          src={ic_Search}
+          alt="search_logo"
+          title="search mercado libre logo"
+        />
       </button>
     </form>
   );

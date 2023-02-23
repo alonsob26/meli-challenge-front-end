@@ -10,6 +10,7 @@ export const ItemResult = ({ ...props }) => {
           <img
             src={props.picture === "" ? notFoundImg : props.picture}
             alt={props.title}
+            title={props.title}
           />
         </div>
         <div className="item_info_container">
@@ -28,7 +29,7 @@ export const ItemResult = ({ ...props }) => {
 };
 
 ItemResult.propTypes = {
-  img: PropTypes.string.isRequired,
+  picture: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   shipping: PropTypes.bool.isRequired,
   price: PropTypes.number.isRequired,

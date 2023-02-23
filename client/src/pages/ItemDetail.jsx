@@ -39,6 +39,7 @@ export const ItemDetail = () => {
                 <img
                   src={item.picture === "" ? notFoundImg : item.picture}
                   alt="item_img"
+                  title={item.title}
                 />
               </div>
               <div className="item_detail_info_container">

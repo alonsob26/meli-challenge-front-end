@@ -24,7 +24,7 @@ export const Dashboard = () => {
                 <ItemResult
                   key={item.id}
                   decimals={item.price.decimals}
-                  img={item.picture}
+                  picture={item.picture}
                   price={item.price.amount}
                   seller={item.location}
                   shipping={item.free_shipping}
