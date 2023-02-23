@@ -38,7 +38,7 @@ export const SearchResults = () => {
                   decimals={item.price.decimals}
                   img={item.picture}
                   price={item.price.amount}
-                  seller={`Alonso Burgos`}
+                  seller={item.location}
                   shipping={item.free_shipping}
                   title={item.title}
                 />

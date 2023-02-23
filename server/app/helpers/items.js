@@ -26,6 +26,7 @@ const parseItems = (items) => {
       picture: item.thumbnail.replace("-I", "-O"),
       condition: item.condition,
       free_shipping: item.shipping.free_shipping,
+      location: item.seller_address.state.name,
     });
   });
 
@@ -78,7 +79,6 @@ const getCategoryNames = async (categories) => {
 
 //función para obtener el path de las categorias
 const getCategoryPath = async (category_id) => {
-  const categoryPath = [];
   const category = await fetchUrl(`${apis.getCategory}${category_id}`);
   return category.path_from_root;
 };
