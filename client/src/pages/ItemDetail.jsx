@@ -1,8 +1,9 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getItem } from "../apis/items";
+import { getItem } from "../services/items";
 import { Breadcumbs } from "../components/Layout/Breadcumbs";
 import { ItemPrice } from "../components/common/ItemPrice";
+import notFoundImg from "../assets/404.png";
 
 export const ItemDetail = () => {
   const { id } = useParams();
@@ -35,7 +36,10 @@ export const ItemDetail = () => {
           <>
             <div className="item_detail_container">
               <div className="item_detail_img">
-                <img src={item.picture} alt="item_img" />
+                <img
+                  src={item.picture === "" ? notFoundImg : item.picture}
+                  alt="item_img"
+                />
               </div>
               <div className="item_detail_info_container">
                 <span className="condition_quantity">

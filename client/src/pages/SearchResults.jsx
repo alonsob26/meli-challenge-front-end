@@ -1,13 +1,13 @@
 import { useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { searchItems } from "../apis/items";
+import { searchItems } from "../services/items";
 import { Breadcumbs } from "../components/Layout/Breadcumbs";
 import { ItemResult } from "../components/ItemResult/ItemResult";
 import { Link } from "react-router-dom";
 
 export const SearchResults = () => {
   let [searchParams] = useSearchParams();
-  let query = searchParams.get("q");
+  let query = searchParams.get("search");
   let category = searchParams.get("category");
   const [searchResult, setSearchResult] = useState({});
   useEffect(() => {
@@ -36,7 +36,7 @@ export const SearchResults = () => {
                 <ItemResult
                   key={item.id}
                   decimals={item.price.decimals}
-                  img={item.picture}
+                  picture={item.picture}
                   price={item.price.amount}
                   seller={item.location}
                   shipping={item.free_shipping}
