@@ -4,6 +4,7 @@ import { getItem } from "../services/items";
 import { Breadcumbs } from "../components/Layout/Breadcumbs";
 import { ItemPrice } from "../components/common/ItemPrice";
 import notFoundImg from "../assets/404.png";
+import { HelmetPage } from "../components/common/HelmetPage";
 
 export const ItemDetail = () => {
   const { id } = useParams();
@@ -30,7 +31,17 @@ export const ItemDetail = () => {
 
   return (
     <>
-      {item.path_from_root && <Breadcumbs categories={item.path_from_root} />}
+      {item.path_from_root && (
+        <>
+          <HelmetPage
+            title={item.path_from_root[item.path_from_root.length - 1].name}
+            keywords={item.path_from_root.map((category) => {
+              return category.name;
+            })}
+          />
+          <Breadcumbs categories={item.path_from_root} />
+        </>
+      )}
       <div className="page_container">
         {item.id ? (
           <>

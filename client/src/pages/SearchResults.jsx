@@ -4,6 +4,7 @@ import { searchItems } from "../services/items";
 import { Breadcumbs } from "../components/Layout/Breadcumbs";
 import { ItemResult } from "../components/ItemResult/ItemResult";
 import { Link } from "react-router-dom";
+import { HelmetPage } from "../components/common/HelmetPage";
 
 export const SearchResults = () => {
   let [searchParams] = useSearchParams();
@@ -22,7 +23,17 @@ export const SearchResults = () => {
   return (
     <>
       {searchResult.categories && searchResult.categories.length > 0 && (
-        <Breadcumbs categories={searchResult.categories} />
+        <>
+          <HelmetPage
+            title={
+              searchResult.categories[searchResult.categories.length - 1].name
+            }
+            keywords={searchResult.categories.map((category) => {
+              return category.name;
+            })}
+          />
+          <Breadcumbs categories={searchResult.categories} />
+        </>
       )}
       <div className="page_container">
         {searchResult.items && searchResult.items.length > 0 ? (

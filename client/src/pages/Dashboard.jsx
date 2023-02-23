@@ -2,19 +2,37 @@ import { useLoaderData } from "react-router-dom";
 import { Breadcumbs } from "../components/Layout/Breadcumbs";
 import { ItemResult } from "../components/ItemResult/ItemResult";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { HelmetPage } from "../components/common/HelmetPage";
 
 export const Dashboard = () => {
   const items = useLoaderData();
-  let categories = [];
-  if (items.data && items.data.categories.length > 0) {
-    categories = items.data.categories;
-  }
+  const [itemResult, setItemResult] = useState();
+  const [categories, setCategories] = useState();
+
+  useEffect(() => {
+    if (items.data && items.data.items.length > 0) {
+      setItemResult(items.data.items);
+      setCategories(items.data.categories);
+    }
+  }, [items.data]);
+
   return (
     <>
-      {categories.length > 0 && <Breadcumbs categories={categories} />}
+      {categories && (
+        <>
+          <HelmetPage
+            title={categories[categories.length - 1].name}
+            keywords={categories.map((category) => {
+              return category.name;
+            })}
+          />
+          <Breadcumbs categories={categories} />
+        </>
+      )}
       <div className="page_container">
-        {items.data && items.data.items.length > 0 ? (
-          items.data.items.map((item) => {
+        {itemResult && itemResult.length > 0 ? (
+          itemResult.map((item) => {
             return (
               <Link
                 className="dashboard_link"
