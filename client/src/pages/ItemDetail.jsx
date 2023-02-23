@@ -51,7 +51,11 @@ export const ItemDetail = () => {
               <span className="description_title">
                 {"Descripción del producto"}
               </span>
-              <span className="description_text">{item.description}</span>
+              <span className="description_text">
+                {item.description
+                  ? item.description
+                  : "El producto no tiene descripción"}
+              </span>
             </div>
           </>
         ) : (
