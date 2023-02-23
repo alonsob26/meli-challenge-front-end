@@ -12,7 +12,7 @@ export const Dashboard = () => {
   return (
     <>
       {categories.length > 0 && <Breadcumbs categories={categories} />}
-      <div className="dashboard_container">
+      <div className="page_container">
         {items.data && items.data.items.length > 0 ? (
           items.data.items.map((item) => {
             return (

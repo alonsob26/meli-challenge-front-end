@@ -1,41 +1,19 @@
 import PropTypes from "prop-types";
-import shipping_logo from "../../assets/ic_shipping.png";
-import { formatMoney } from "../../utils/formatMoney";
+import { ItemPrice } from "../common/ItemPrice";
 
-export const ItemResult = ({
-  img,
-  title,
-  shipping,
-  price,
-  seller,
-  decimals,
-}) => {
+export const ItemResult = ({ ...props }) => {
   return (
     <div className="item_result_container">
       <div className="item_container">
         <div className="item_img_container">
-          <img src={img} alt={title} />
+          <img src={props.img} alt={props.title} />
         </div>
         <div className="item_info_container">
-          <div className="item_price">
-            <span>{`$ ${formatMoney({
-              amount: price,
-            })}`}</span>
-            <span className="item_price_decimals">
-              {decimals === 0 ? "00" : decimals}
-            </span>
-            {shipping && (
-              <img
-                className="item_shipping"
-                src={shipping_logo}
-                alt="shipping"
-              />
-            )}
-          </div>
-          <div className="item_title">{title}</div>
+          <ItemPrice props={props} styles={"item_result_price"} />
+          <div className="item_title">{props.title}</div>
         </div>
         <div className="item_seller_container">
-          <div className="item_seller">{seller}</div>
+          <div className="item_seller">{props.seller}</div>
         </div>
       </div>
       <div className="item_divider">

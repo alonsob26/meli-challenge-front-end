@@ -24,7 +24,7 @@ export const SearchResults = () => {
       {searchResult.categories && searchResult.categories.length > 0 && (
         <Breadcumbs categories={searchResult.categories} />
       )}
-      <div className="dashboard_container">
+      <div className="page_container">
         {searchResult.items && searchResult.items.length > 0 ? (
           searchResult.items.map((item) => {
             return (
