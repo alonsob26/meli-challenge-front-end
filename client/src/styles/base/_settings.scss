@@ -1,13 +1,15 @@
 $yellow: #ffe600;
 $black: #333333;
 $darkGray: #666666;
-$lightGray: #999999;
-$white: #eeeeee;
+$gray: #999999;
+$lightGray: #eeeeee;
 $blue: #3483fa;
+$white: #ffffff;
 
 body {
   height: 100vh;
   width: 100vw;
   margin: 0;
-  background-color: $white;
+  font-family: "Roboto", sans-serif;
+  background-color: #eeeeee;
 }

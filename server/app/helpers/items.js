@@ -4,7 +4,6 @@ const { apis } = require("../config/apis");
 //función para parsear los items
 const parseItems = (items) => {
   const parseResponse = {
-    //TODO: Preguntar que es lo que significa Author
     author: {
       name: "Alonso",
       lastname: "Burgos",
@@ -21,10 +20,10 @@ const parseItems = (items) => {
       title: item.title,
       price: {
         currency: item.currency_id,
-        amount: Number(price.shift()),
-        decimals: price.length > 1 ? Number(price.pop()) : 0,
+        amount: Number(price[0]),
+        decimals: price.length > 1 ? Number(price[1]) : 0,
       },
-      picture: `http://http2.mlstatic.com/D_${item.thumbnail_id}-O.jpg`,
+      picture: item.thumbnail.replace("-I", "-O"),
       condition: item.condition,
       free_shipping: item.shipping.free_shipping,
     });
@@ -37,7 +36,6 @@ const parseItems = (items) => {
 const parseItemDetail = async (item) => {
   const price = String(item.price).split(".");
   const parseResponse = {
-    //TODO: Preguntar que es lo que significa Author
     author: {
       name: "Alonso",
       lastname: "Burgos",
@@ -47,10 +45,10 @@ const parseItemDetail = async (item) => {
       title: item.title,
       price: {
         currency: item.currency_id,
-        amount: Number(price.shift()),
-        decimals: price.length > 1 ? Number(price.pop()) : 0,
+        amount: Number(price[0]),
+        decimals: price.length > 1 ? Number(price[1]) : 0,
       },
-      picture: `http://http2.mlstatic.com/D_${item.thumbnail_id}-O.jpg`,
+      picture: item.thumbnail.replace("-I", "-O"),
       condition: item.condition,
       free_shipping: item.shipping.free_shipping,
       sold_quantity: item.sold_quantity,

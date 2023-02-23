@@ -1,28 +1,35 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 import ic_Search from "../../assets/ic_Search.png";
+import { useSearchParams } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { useEffect } from "react";
 
 export const Search = () => {
-  const [prevSearchValue, setPrevSearchValue] = useState("");
+  const { register, handleSubmit, setValue } = useForm();
+  let [searchParams] = useSearchParams();
   const navigate = useNavigate();
 
+  //setear el valor del input con el valor del query params
+  useEffect(() => {
+    const search = searchParams.get("q");
+    search ? setValue("search", search) : setValue("search", "");
+  }, [searchParams, setValue]);
+
   //funcion para navegar a la ruta items y pasarle el valor del input con query params
-  function handleSubmit(event) {
-    const newSearchValue = event.target.elements[0].value;
-    event.preventDefault();
-    const params = { search: newSearchValue };
+  function onSubmit({ search }) {
     //esta condicion valida que el valor del input no sea vacio y que el valor del input sea diferente al valor del input anterior
-    if (newSearchValue !== "" && prevSearchValue !== newSearchValue) {
-      navigate(`/items?search=${params.search}`);
-      setPrevSearchValue(newSearchValue);
+    if (search !== "" && searchParams !== search) {
+      navigate(`/items?q=${search}`);
     }
   }
+
   return (
-    <form className="searchItems_form" onSubmit={handleSubmit}>
+    <form className="searchItems_form" onSubmit={handleSubmit(onSubmit)}>
       <input
+        {...register("search")}
         className="searchItems_input"
         placeholder="Nunca dejes de buscar"
-        spellcheck="false"
+        spellCheck="false"
       />
       <button className="searchItems_button">
         <img src={ic_Search} alt="search_logo" />

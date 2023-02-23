@@ -4,5 +4,11 @@
 //Components.
 @import "components/searchHeader";
 @import "components/searchItems";
+@import "components/layout";
+@import "components/breadcumbs";
+@import "components/itemResult";
 
 //Screens.
+@import "pages/dashboard";
+@import "pages/searchResults";
+@import "pages/itemDetail";

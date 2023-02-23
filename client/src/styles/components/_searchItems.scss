@@ -11,11 +11,11 @@
   flex: 1;
   border: 0;
   height: 36px;
-  font-size: 16px;
+  font-size: 1.125rem;
   padding-left: 14px;
   color: $black;
   &::placeholder {
-    color: $lightGray;
+    color: #a9a9a9;
   }
   &:focus {
     outline: none;
@@ -27,12 +27,9 @@
   height: 38px;
   border: 0;
   border-radius: 0 4px 4px 0;
+  cursor: pointer;
   > img {
     width: 18px;
     margin-top: 3px;
   }
-}
-
-.searchItems_icon {
-  width: 30px;
 }

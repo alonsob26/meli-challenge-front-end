@@ -1,0 +1,19 @@
+.dashboard_link {
+  text-decoration: none;
+}
+
+.page_container {
+  margin-top: 16px;
+  background-color: #ffffff;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  border-radius: 4px;
+  flex-direction: column;
+  margin-bottom: 100px;
+  a:last-of-type {
+    hr:last-child {
+      display: none;
+    }
+  }
+}
