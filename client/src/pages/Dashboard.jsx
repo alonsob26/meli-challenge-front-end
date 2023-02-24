@@ -3,7 +3,7 @@ import { Breadcumbs } from "../components/Layout/Breadcumbs";
 import { ItemResult } from "../components/ItemResult/ItemResult";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { HelmetPage } from "../components/common/HelmetPage";
+import { SEO } from "../components/common/SEO";
 
 export const Dashboard = () => {
   const items = useLoaderData();
@@ -21,7 +21,7 @@ export const Dashboard = () => {
     <>
       {categories && (
         <>
-          <HelmetPage
+          <SEO
             title={categories[categories.length - 1].name}
             keywords={categories.map((category) => {
               return category.name;

@@ -4,7 +4,7 @@ import { getItem } from "../services/items";
 import { Breadcumbs } from "../components/Layout/Breadcumbs";
 import { ItemPrice } from "../components/common/ItemPrice";
 import notFoundImg from "../assets/404.png";
-import { HelmetPage } from "../components/common/HelmetPage";
+import { SEO } from "../components/common/SEO";
 
 export const ItemDetail = () => {
   const { id } = useParams();
@@ -33,7 +33,7 @@ export const ItemDetail = () => {
     <>
       {item.path_from_root && (
         <>
-          <HelmetPage
+          <SEO
             title={item.path_from_root[item.path_from_root.length - 1].name}
             keywords={item.path_from_root.map((category) => {
               return category.name;

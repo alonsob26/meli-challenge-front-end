@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-export const HelmetPage = ({ ...props }) => {
+export const SEO = ({ ...props }) => {
   const location = useLocation();
   const [query, setQuery] = useState();
 
