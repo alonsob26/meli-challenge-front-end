@@ -1,0 +1,7 @@
+.item_detail_img {
+  > img {
+    aspect-ratio: 1;
+    width: 680px;
+    object-fit: contain;
+  }
+}

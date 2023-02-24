@@ -1,10 +1,10 @@
-import { Header } from "./Header";
+import Header from "./Header";
 import { Outlet } from "react-router-dom";
 
 /* Componente Layout que contiene el Header y el Outlet 
 donde se muestran las paginas */
 
-export const Layout = () => {
+const Layout = () => {
   return (
     <div className="layout_container">
       <Header />
@@ -16,3 +16,5 @@ export const Layout = () => {
     </div>
   );
 };
+
+export default Layout;

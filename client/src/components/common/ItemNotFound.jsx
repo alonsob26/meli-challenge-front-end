@@ -2,7 +2,7 @@ import itemNotFound from "../../assets/img_itemNotFound.png";
 
 /* componente que se renderiza cuando no encuentra un producto */
 
-export const ItemNotFound = () => {
+const ItemNotFound = () => {
   return (
     <div className="itemNotFound">
       <h1>Producto no encontrado</h1>
@@ -10,3 +10,5 @@ export const ItemNotFound = () => {
     </div>
   );
 };
+
+export default ItemNotFound;

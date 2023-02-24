@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
-import { ItemPrice } from "../common/ItemPrice";
+import { ItemPrice } from "../common/index";
 import notFoundImg from "../../assets/404.png";
 
 /* componente para retornar un producto en la pagina de busqueda */
 
-export const ItemResult = ({ ...props }) => {
+const ItemResult = ({ ...props }) => {
   return (
     <div className="item_result_container">
       <div className="item_container">
@@ -33,8 +33,10 @@ export const ItemResult = ({ ...props }) => {
 ItemResult.propTypes = {
   picture: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  shipping: PropTypes.bool.isRequired,
+  seller: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   decimals: PropTypes.number.isRequired,
-  seller: PropTypes.string.isRequired,
+  shipping: PropTypes.bool.isRequired,
 };
+
+export default ItemResult;

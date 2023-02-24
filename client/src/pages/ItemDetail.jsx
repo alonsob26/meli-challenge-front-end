@@ -1,17 +1,22 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getItem } from "../services/items";
-import { Breadcumbs } from "../components/Layout/Breadcumbs";
-import { ItemPrice } from "../components/common/ItemPrice";
-import notFoundImg from "../assets/404.png";
-import { SEO } from "../components/common/SEO";
-import { PageContainer } from "../components/common/PageContainer";
-import { ItemNotFound } from "../components/common/ItemNotFound";
-import { Spinner } from "../components/common/Spinner";
+import { Breadcrumbs } from "../components/Layout/index";
+import {
+  SEO,
+  PageContainer,
+  ItemNotFound,
+  Spinner,
+} from "../components/common/index";
+import {
+  ItemDetailImg,
+  ItemDetailInfo,
+  ItemDetailDescription,
+} from "../components/ItemDetail/index";
 
 /* Este componente renderiza el detalle de los productos individualmente */
 
-export const ItemDetail = () => {
+const ItemDetail = () => {
   /* useParams hook to get the id value from the url */
   const { id } = useParams();
   const [item, setItem] = useState({});
@@ -47,17 +52,11 @@ export const ItemDetail = () => {
     fetchItem();
   }, [id]);
 
-  const saludar = () => {
-    alert(
-      "Hola gracias por probar mi challenge de meli :D saludos! \nAlonso Burgos Astorga 2023"
-    );
-  };
-
   if (loading) return <Spinner />;
 
   return (
     <>
-      {/* SEO and Breadcumbs components  */}
+      {/* SEO and Breadcrumbs components  */}
       {item.path_from_root && (
         <>
           <SEO
@@ -66,7 +65,7 @@ export const ItemDetail = () => {
               return category.name;
             })}
           />
-          <Breadcumbs categories={item.path_from_root} />
+          <Breadcrumbs categories={item.path_from_root} />
         </>
       )}
       {/* ItemDetail page content */}
@@ -74,40 +73,10 @@ export const ItemDetail = () => {
         {item.id ? (
           <>
             <div className="item_detail_container">
-              <div className="item_detail_img">
-                <img
-                  src={item.picture === "" ? notFoundImg : item.picture}
-                  alt="item_img"
-                  title={item.title}
-                />
-              </div>
-              <div className="item_detail_info_container">
-                <span className="condition_quantity">
-                  {item.condition === "new" ? "Nuevo" : item.condition} -{" "}
-                  {item.sold_quantity} vendidos
-                </span>
-                <span className="item_detail_name">{item.title}</span>
-                <ItemPrice props={itemPriceInfo} styles={"item_detail_price"} />
-                <button
-                  className="buy_button"
-                  onClick={() => {
-                    saludar();
-                  }}
-                >
-                  Comprar
-                </button>
-              </div>
+              <ItemDetailImg {...item} />
+              <ItemDetailInfo {...item} price_info={itemPriceInfo} />
             </div>
-            <div className="description_detail">
-              <span className="description_title">
-                {"Descripción del producto"}
-              </span>
-              <span className="description_text">
-                {item.description
-                  ? item.description
-                  : "El producto no tiene descripción"}
-              </span>
-            </div>
+            <ItemDetailDescription {...item} />
           </>
         ) : (
           !loading && <ItemNotFound />
@@ -116,3 +85,5 @@ export const ItemDetail = () => {
     </>
   );
 };
+
+export default ItemDetail;

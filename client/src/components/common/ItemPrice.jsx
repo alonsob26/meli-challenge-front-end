@@ -1,9 +1,10 @@
 import { formatMoney } from "../../utils/formatMoney";
 import shipping_logo from "../../assets/ic_shipping.png";
+import PropTypes from "prop-types";
 
 /* Componente para renderizar el precio del producto */
 
-export const ItemPrice = ({ props, styles }) => {
+const ItemPrice = ({ props, styles }) => {
   return (
     <div className={styles}>
       <span>{`$ ${formatMoney({
@@ -16,3 +17,12 @@ export const ItemPrice = ({ props, styles }) => {
     </div>
   );
 };
+
+ItemPrice.propTypes = {
+  price: PropTypes.number.isRequired,
+  decimals: PropTypes.number.isRequired,
+  shipping: PropTypes.bool.isRequired,
+  styles: PropTypes.string.isRequired,
+};
+
+export default ItemPrice;

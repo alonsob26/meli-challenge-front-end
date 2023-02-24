@@ -1,0 +1,15 @@
+.description_detail {
+  margin: 32px;
+  display: flex;
+  flex-direction: column;
+  > span {
+    font-size: 1.75rem;
+    color: $black;
+    margin-bottom: 16px;
+  }
+  > span:last-child {
+    font-size: 0.875rem;
+    color: $gray;
+    margin-bottom: 1rem;
+  }
+}

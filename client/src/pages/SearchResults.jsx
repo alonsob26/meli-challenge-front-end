@@ -1,17 +1,19 @@
 import { useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { searchItems } from "../services/items";
-import { Breadcumbs } from "../components/Layout/Breadcumbs";
-import { ItemResult } from "../components/ItemResult/ItemResult";
+import { Breadcrumbs } from "../components/Layout/index";
+import { ItemResult } from "../components/ItemResult/index";
 import { Link } from "react-router-dom";
-import { SEO } from "../components/common/SEO";
-import { PageContainer } from "../components/common/PageContainer";
-import { ItemNotFound } from "../components/common/ItemNotFound";
-import { Spinner } from "../components/common/Spinner";
+import {
+  SEO,
+  PageContainer,
+  ItemNotFound,
+  Spinner,
+} from "../components/common/index";
 
 /* Este componente renderiza la pagina de resultados de busqueda */
 
-export const SearchResults = () => {
+const SearchResults = () => {
   /* useSearchParams hook to get the query params from the url */
   let [searchParams] = useSearchParams();
   let query = searchParams.get("search");
@@ -45,7 +47,7 @@ export const SearchResults = () => {
 
   return (
     <>
-      {/* SEO and Breadcumbs components  */}
+      {/* SEO and Breadcrumbs components  */}
       {searchResult.categories && searchResult.categories.length > 0 && (
         <>
           <SEO
@@ -56,7 +58,7 @@ export const SearchResults = () => {
               return category.name;
             })}
           />
-          <Breadcumbs categories={searchResult.categories} />
+          <Breadcrumbs categories={searchResult.categories} />
         </>
       )}
       {/* SearchResults page content */}
@@ -86,3 +88,5 @@ export const SearchResults = () => {
     </>
   );
 };
+
+export default SearchResults;

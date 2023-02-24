@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 /* Componente para mostrar los breadcrumbs (categorias) */
 
-export const Breadcumbs = ({ categories }) => {
+const Breadcrumbs = ({ categories }) => {
   //eliminar elementos de categories excepto los primeros 4
   if (categories.length > 4) {
     categories.splice(4, categories.length - 4);
@@ -25,6 +25,8 @@ export const Breadcumbs = ({ categories }) => {
   );
 };
 
-Breadcumbs.propTypes = {
+Breadcrumbs.propTypes = {
   categories: PropTypes.array.isRequired,
 };
+
+export default Breadcrumbs;
