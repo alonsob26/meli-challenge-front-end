@@ -1,8 +1,10 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getItem } from "../apis/items";
+import { getItem } from "../services/items";
 import { Breadcumbs } from "../components/Layout/Breadcumbs";
 import { ItemPrice } from "../components/common/ItemPrice";
+import notFoundImg from "../assets/404.png";
+import { SEO } from "../components/common/SEO";
 
 export const ItemDetail = () => {
   const { id } = useParams();
@@ -29,13 +31,27 @@ export const ItemDetail = () => {
 
   return (
     <>
-      {item.path_from_root && <Breadcumbs categories={item.path_from_root} />}
+      {item.path_from_root && (
+        <>
+          <SEO
+            title={item.path_from_root[item.path_from_root.length - 1].name}
+            keywords={item.path_from_root.map((category) => {
+              return category.name;
+            })}
+          />
+          <Breadcumbs categories={item.path_from_root} />
+        </>
+      )}
       <div className="page_container">
         {item.id ? (
           <>
             <div className="item_detail_container">
               <div className="item_detail_img">
-                <img src={item.picture} alt="item_img" />
+                <img
+                  src={item.picture === "" ? notFoundImg : item.picture}
+                  alt="item_img"
+                  title={item.title}
+                />
               </div>
               <div className="item_detail_info_container">
                 <span className="condition_quantity">

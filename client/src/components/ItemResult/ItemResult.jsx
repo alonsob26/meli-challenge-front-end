@@ -1,12 +1,17 @@
 import PropTypes from "prop-types";
 import { ItemPrice } from "../common/ItemPrice";
+import notFoundImg from "../../assets/404.png";
 
 export const ItemResult = ({ ...props }) => {
   return (
     <div className="item_result_container">
       <div className="item_container">
         <div className="item_img_container">
-          <img src={props.img} alt={props.title} />
+          <img
+            src={props.picture === "" ? notFoundImg : props.picture}
+            alt={props.title}
+            title={props.title}
+          />
         </div>
         <div className="item_info_container">
           <ItemPrice props={props} styles={"item_result_price"} />
@@ -24,7 +29,7 @@ export const ItemResult = ({ ...props }) => {
 };
 
 ItemResult.propTypes = {
-  img: PropTypes.string.isRequired,
+  picture: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   shipping: PropTypes.bool.isRequired,
   price: PropTypes.number.isRequired,

@@ -11,28 +11,32 @@ export const Search = () => {
 
   //setear el valor del input con el valor del query params
   useEffect(() => {
-    const search = searchParams.get("q");
-    search ? setValue("search", search) : setValue("search", "");
+    const searchValue = searchParams.get("search");
+    searchValue ? setValue("search", searchValue) : setValue("search", "");
   }, [searchParams, setValue]);
 
   //funcion para navegar a la ruta items y pasarle el valor del input con query params
-  function onSubmit({ search }) {
+  function onSubmit({ searchValue }) {
     //esta condicion valida que el valor del input no sea vacio y que el valor del input sea diferente al valor del input anterior
-    if (search !== "" && searchParams !== search) {
-      navigate(`/items?q=${search}`);
+    if (searchValue !== "" && searchParams !== searchValue) {
+      navigate(`/items?search=${searchValue}`);
     }
   }
 
   return (
     <form className="searchItems_form" onSubmit={handleSubmit(onSubmit)}>
       <input
-        {...register("search")}
+        {...register("searchValue")}
         className="searchItems_input"
         placeholder="Nunca dejes de buscar"
         spellCheck="false"
       />
       <button className="searchItems_button">
-        <img src={ic_Search} alt="search_logo" />
+        <img
+          src={ic_Search}
+          alt="search_logo"
+          title="search mercado libre logo"
+        />
       </button>
     </form>
   );

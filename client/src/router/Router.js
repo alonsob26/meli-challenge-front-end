@@ -3,7 +3,7 @@ import {
   createRoutesFromElements,
   Route,
 } from "react-router-dom";
-import { getItems } from "../apis/items";
+import { getItems } from "../services/items";
 import { Layout } from "../components/Layout/Layout";
 import { Dashboard } from "../pages/Dashboard";
 import { ItemDetail } from "../pages/ItemDetail";
