@@ -26,10 +26,12 @@ export const SearchResults = () => {
         category ? `${query}&category=${category}` : query
       );
       if (res.data.error) {
+        setLoading(false);
         return;
       }
       setSearchResult(res.data);
     } catch (err) {
+      setLoading(false);
       console.error(err);
     }
     setLoading(false);

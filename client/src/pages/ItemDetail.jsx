@@ -24,23 +24,34 @@ export const ItemDetail = () => {
 
   const fetchItem = async () => {
     setLoading(true);
-    const res = await getItem(id);
-    if (res.data.length === 0) {
+    try {
+      const res = await getItem(id);
+      if (res.data.length === 0) {
+        setLoading(false);
+        return;
+      }
+      setItem(res.data.item);
+      setItemPriceInfo({
+        price: res.data.item.price.amount,
+        decimals: res.data.item.price.decimals,
+        shipping: res.data.item.free_shipping,
+      });
       setLoading(false);
-      return;
+    } catch (err) {
+      setLoading(false);
+      console.error(err);
     }
-    setItem(res.data.item);
-    setItemPriceInfo({
-      price: res.data.item.price.amount,
-      decimals: res.data.item.price.decimals,
-      shipping: res.data.item.free_shipping,
-    });
-    setLoading(false);
   };
 
   useEffect(() => {
     fetchItem();
   }, [id]);
+
+  const saludar = () => {
+    alert(
+      "Hola gracias por probar mi challenge de meli :D saludos! \nAlonso Burgos Astorga 2023"
+    );
+  };
 
   if (loading) return <Spinner />;
 
@@ -77,7 +88,14 @@ export const ItemDetail = () => {
                 </span>
                 <span className="item_detail_name">{item.title}</span>
                 <ItemPrice props={itemPriceInfo} styles={"item_detail_price"} />
-                <button className="buy_button">Comprar</button>
+                <button
+                  className="buy_button"
+                  onClick={() => {
+                    saludar();
+                  }}
+                >
+                  Comprar
+                </button>
               </div>
             </div>
             <div className="description_detail">
