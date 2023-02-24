@@ -1,4 +1,3 @@
-import React from "react";
 import { formatMoney } from "../../utils/formatMoney";
 import shipping_logo from "../../assets/ic_shipping.png";
 

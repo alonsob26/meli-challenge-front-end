@@ -6,6 +6,7 @@ import { ItemResult } from "../components/ItemResult/ItemResult";
 import { Link } from "react-router-dom";
 import { SEO } from "../components/common/SEO";
 import { PageContainer } from "../components/common/PageContainer";
+import { ItemNotFound } from "../components/common/ItemNotFound";
 
 /* Este componente renderiza la pagina de resultados de busqueda */
 
@@ -19,6 +20,9 @@ export const SearchResults = () => {
   useEffect(() => {
     searchItems(category ? `${query}&category=${category}` : query)
       .then((res) => {
+        if (res.data.error) {
+          return;
+        }
         setSearchResult(res.data);
       })
       .catch((err) => {
@@ -65,7 +69,7 @@ export const SearchResults = () => {
             );
           })
         ) : (
-          <div>ITEM NOT FOUND</div>
+          <ItemNotFound />
         )}
       </PageContainer>
     </>

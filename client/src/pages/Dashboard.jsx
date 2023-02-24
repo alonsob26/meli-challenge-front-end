@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { SEO } from "../components/common/SEO";
 import { PageContainer } from "../components/common/PageContainer";
+import { ItemNotFound } from "../components/common/ItemNotFound";
 
 /* Este componente renderiza la pagina inicial de la app */
 
@@ -58,7 +59,7 @@ export const Dashboard = () => {
             );
           })
         ) : (
-          <div>ITEM NOT FOUND</div>
+          <ItemNotFound />
         )}
       </PageContainer>
     </>

@@ -13,7 +13,7 @@ export const Header = () => {
             src={logo_ml}
             alt="logo_ml"
             title="https://www.mercadolibre.com/"
-          />{" "}
+          />
         </a>
         <Search />
       </div>

@@ -1,5 +1,3 @@
-import React from "react";
-
 /* Componente contenedor de las paginas */
 
 export const PageContainer = ({ children }) => {

@@ -6,6 +6,7 @@ import { ItemPrice } from "../components/common/ItemPrice";
 import notFoundImg from "../assets/404.png";
 import { SEO } from "../components/common/SEO";
 import { PageContainer } from "../components/common/PageContainer";
+import { ItemNotFound } from "../components/common/ItemNotFound";
 
 /* Este componente renderiza el detalle de los productos individualmente */
 
@@ -22,6 +23,9 @@ export const ItemDetail = () => {
   useEffect(() => {
     getItem(id)
       .then((res) => {
+        if (res.data.length === 0) {
+          return;
+        }
         setItem(res.data.item);
         setItemPriceInfo({
           price: res.data.item.price.amount,
@@ -82,7 +86,7 @@ export const ItemDetail = () => {
             </div>
           </>
         ) : (
-          <div>ITEM NOT FOUND</div>
+          <ItemNotFound />
         )}
       </PageContainer>
     </>
