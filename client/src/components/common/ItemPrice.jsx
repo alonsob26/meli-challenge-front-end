@@ -9,7 +9,9 @@ export const ItemPrice = ({ props, styles }) => {
         price: props.price,
       })}`}</span>
       <span>{props.decimals === 0 ? "00" : props.decimals}</span>
-      {props.shipping && <img src={shipping_logo} alt="shipping" />}
+      {props.shipping && (
+        <img src={shipping_logo} alt="shipping" title="shipping" />
+      )}
     </div>
   );
 };
