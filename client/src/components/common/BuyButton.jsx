@@ -4,7 +4,7 @@ const saludar = () => {
   );
 };
 
-const BuyButtom = () => {
+const BuyButton = () => {
   return (
     <button
       className="buy_button"
@@ -17,4 +17,4 @@ const BuyButtom = () => {
   );
 };
 
-export default BuyButtom;
+export default BuyButton;

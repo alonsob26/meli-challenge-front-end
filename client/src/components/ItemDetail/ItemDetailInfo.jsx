@@ -1,5 +1,5 @@
 import propTypes from "prop-types";
-import { BuyButtom, ItemPrice } from "../common/index";
+import { BuyButton, ItemPrice } from "../common/index";
 
 const ItemDetailInfo = ({ condition, sold_quantity, title, price_info }) => {
   return (
@@ -9,7 +9,7 @@ const ItemDetailInfo = ({ condition, sold_quantity, title, price_info }) => {
       </span>
       <span className="item_detail_name">{title}</span>
       <ItemPrice props={price_info} styles={"item_detail_price"} />
-      <BuyButtom />
+      <BuyButton />
     </div>
   );
 };
