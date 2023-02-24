@@ -1,5 +1,6 @@
-// este archivo contiene las funciones que se encargan de hacer las peticiones al servidor
-//el proxy se encuentra en el package.json
+/* este archivo contiene las funciones que se encargan de hacer las peticiones al servidor
+el proxy se encuentra en el package.json */
+
 const API_URL = process.env.REACT_APP_API_URL;
 
 export const getItems = async () => {

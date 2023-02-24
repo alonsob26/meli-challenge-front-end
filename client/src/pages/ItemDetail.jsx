@@ -5,8 +5,14 @@ import { Breadcumbs } from "../components/Layout/Breadcumbs";
 import { ItemPrice } from "../components/common/ItemPrice";
 import notFoundImg from "../assets/404.png";
 import { SEO } from "../components/common/SEO";
+import { PageContainer } from "../components/common/PageContainer";
+import { ItemNotFound } from "../components/common/ItemNotFound";
+import { Spinner } from "../components/common/Spinner";
+
+/* Este componente renderiza el detalle de los productos individualmente */
 
 export const ItemDetail = () => {
+  /* useParams hook to get the id value from the url */
   const { id } = useParams();
   const [item, setItem] = useState({});
   const [itemPriceInfo, setItemPriceInfo] = useState({
@@ -14,23 +20,44 @@ export const ItemDetail = () => {
     decimals: 0,
     shipping: false,
   });
-  useEffect(() => {
-    getItem(id)
-      .then((res) => {
-        setItem(res.data.item);
-        setItemPriceInfo({
-          price: res.data.item.price.amount,
-          decimals: res.data.item.price.decimals,
-          shipping: res.data.item.free_shipping,
-        });
-      })
-      .catch((err) => {
-        console.error(err);
+  const [loading, setLoading] = useState(true);
+
+  const fetchItem = async () => {
+    setLoading(true);
+    try {
+      const res = await getItem(id);
+      if (res.data.length === 0) {
+        setLoading(false);
+        return;
+      }
+      setItem(res.data.item);
+      setItemPriceInfo({
+        price: res.data.item.price.amount,
+        decimals: res.data.item.price.decimals,
+        shipping: res.data.item.free_shipping,
       });
+      setLoading(false);
+    } catch (err) {
+      setLoading(false);
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    fetchItem();
   }, [id]);
+
+  const saludar = () => {
+    alert(
+      "Hola gracias por probar mi challenge de meli :D saludos! \nAlonso Burgos Astorga 2023"
+    );
+  };
+
+  if (loading) return <Spinner />;
 
   return (
     <>
+      {/* SEO and Breadcumbs components  */}
       {item.path_from_root && (
         <>
           <SEO
@@ -42,7 +69,8 @@ export const ItemDetail = () => {
           <Breadcumbs categories={item.path_from_root} />
         </>
       )}
-      <div className="page_container">
+      {/* ItemDetail page content */}
+      <PageContainer>
         {item.id ? (
           <>
             <div className="item_detail_container">
@@ -60,7 +88,14 @@ export const ItemDetail = () => {
                 </span>
                 <span className="item_detail_name">{item.title}</span>
                 <ItemPrice props={itemPriceInfo} styles={"item_detail_price"} />
-                <button className="buy_button">Comprar</button>
+                <button
+                  className="buy_button"
+                  onClick={() => {
+                    saludar();
+                  }}
+                >
+                  Comprar
+                </button>
               </div>
             </div>
             <div className="description_detail">
@@ -75,9 +110,9 @@ export const ItemDetail = () => {
             </div>
           </>
         ) : (
-          <div>ITEM NOT FOUND</div>
+          !loading && <ItemNotFound />
         )}
-      </div>
+      </PageContainer>
     </>
   );
 };

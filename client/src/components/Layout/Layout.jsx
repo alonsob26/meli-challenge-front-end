@@ -1,6 +1,9 @@
 import { Header } from "./SearchHeader";
 import { Outlet } from "react-router-dom";
 
+/* Componente Layout que contiene el Header y el Outlet 
+donde se muestran las paginas */
+
 export const Layout = () => {
   return (
     <div className="layout_container">
