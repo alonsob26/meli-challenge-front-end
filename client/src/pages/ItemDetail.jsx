@@ -5,6 +5,9 @@ import { Breadcumbs } from "../components/Layout/Breadcumbs";
 import { ItemPrice } from "../components/common/ItemPrice";
 import notFoundImg from "../assets/404.png";
 import { SEO } from "../components/common/SEO";
+import { PageContainer } from "../components/common/PageContainer";
+
+/* Este componente renderiza el detalle de los productos individualmente */
 
 export const ItemDetail = () => {
   /* useParams hook to get the id value from the url */
@@ -46,7 +49,7 @@ export const ItemDetail = () => {
         </>
       )}
       {/* ItemDetail page content */}
-      <div className="page_container">
+      <PageContainer>
         {item.id ? (
           <>
             <div className="item_detail_container">
@@ -81,7 +84,7 @@ export const ItemDetail = () => {
         ) : (
           <div>ITEM NOT FOUND</div>
         )}
-      </div>
+      </PageContainer>
     </>
   );
 };

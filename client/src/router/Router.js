@@ -9,6 +9,8 @@ import { Dashboard } from "../pages/Dashboard";
 import { ItemDetail } from "../pages/ItemDetail";
 import { SearchResults } from "../pages/SearchResults";
 
+/* componente de ruteo para la app */
+
 export const Router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>

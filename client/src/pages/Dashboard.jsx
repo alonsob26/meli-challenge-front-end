@@ -4,6 +4,9 @@ import { ItemResult } from "../components/ItemResult/ItemResult";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { SEO } from "../components/common/SEO";
+import { PageContainer } from "../components/common/PageContainer";
+
+/* Este componente renderiza la pagina inicial de la app */
 
 export const Dashboard = () => {
   /* useLoaderData hook to get the data from the loader route "getItems()" in client/src/router */
@@ -33,7 +36,7 @@ export const Dashboard = () => {
         </>
       )}
       {/* Dashboard page content */}
-      <div className="page_container">
+      <PageContainer>
         {itemResult && itemResult.length > 0 ? (
           itemResult.map((item) => {
             return (
@@ -57,7 +60,7 @@ export const Dashboard = () => {
         ) : (
           <div>ITEM NOT FOUND</div>
         )}
-      </div>
+      </PageContainer>
     </>
   );
 };

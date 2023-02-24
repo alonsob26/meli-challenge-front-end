@@ -2,6 +2,8 @@ import React from "react";
 import { formatMoney } from "../../utils/formatMoney";
 import shipping_logo from "../../assets/ic_shipping.png";
 
+/* Componente para renderizar el precio del producto */
+
 export const ItemPrice = ({ props, styles }) => {
   return (
     <div className={styles}>

@@ -5,6 +5,9 @@ import { Breadcumbs } from "../components/Layout/Breadcumbs";
 import { ItemResult } from "../components/ItemResult/ItemResult";
 import { Link } from "react-router-dom";
 import { SEO } from "../components/common/SEO";
+import { PageContainer } from "../components/common/PageContainer";
+
+/* Este componente renderiza la pagina de resultados de busqueda */
 
 export const SearchResults = () => {
   /* useSearchParams hook to get the query params from the url */
@@ -40,7 +43,7 @@ export const SearchResults = () => {
         </>
       )}
       {/* SearchResults page content */}
-      <div className="page_container">
+      <PageContainer>
         {searchResult.items && searchResult.items.length > 0 ? (
           searchResult.items.map((item) => {
             return (
@@ -64,7 +67,7 @@ export const SearchResults = () => {
         ) : (
           <div>ITEM NOT FOUND</div>
         )}
-      </div>
+      </PageContainer>
     </>
   );
 };

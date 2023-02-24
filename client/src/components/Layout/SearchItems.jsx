@@ -4,6 +4,8 @@ import { useSearchParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useEffect } from "react";
 
+/* Componente para ingresar los valores de busqueda de la pagina */
+
 export const Search = () => {
   const { register, handleSubmit, setValue } = useForm();
   let [searchParams] = useSearchParams();
@@ -13,6 +15,7 @@ export const Search = () => {
   useEffect(() => {
     const searchValue = searchParams.get("search");
     searchValue ? setValue("search", searchValue) : setValue("search", "");
+    console.log(searchValue);
   }, [searchParams, setValue]);
 
   //funcion para navegar a la ruta items y pasarle el valor del input con query params
