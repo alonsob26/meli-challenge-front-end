@@ -6,10 +6,7 @@ agregando un sppiner para mejor UX */
 
 const App = () => {
   return <RouterProvider router={Router} />;
-  /* TODO: <RouterProvider
-    router={router}
-    fallbackElement={<BigSpinner />}
-  />
+  /* 
     TODO: reemplazar navigation con setSearchParams is the same 
   */
 };

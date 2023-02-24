@@ -6,7 +6,7 @@ import { useEffect } from "react";
 
 /* Componente para ingresar los valores de busqueda de la pagina */
 
-export const Search = () => {
+export const SearchInput = () => {
   const { register, handleSubmit, setValue } = useForm();
   let [searchParams] = useSearchParams();
   const navigate = useNavigate();

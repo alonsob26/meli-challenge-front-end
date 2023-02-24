@@ -1,4 +1,4 @@
-import { Header } from "./SearchHeader";
+import { Header } from "./Header";
 import { Outlet } from "react-router-dom";
 
 /* Componente Layout que contiene el Header y el Outlet 
