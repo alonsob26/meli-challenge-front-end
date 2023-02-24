@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { SEO } from "../components/common/SEO";
 
 export const Dashboard = () => {
+  /* useLoaderData hook to get the data from the loader route "getItems()" in client/src/router */
   const items = useLoaderData();
   const [itemResult, setItemResult] = useState();
   const [categories, setCategories] = useState();
@@ -19,6 +20,7 @@ export const Dashboard = () => {
 
   return (
     <>
+      {/* SEO and Breadcumbs components  */}
       {categories && (
         <>
           <SEO
@@ -30,6 +32,7 @@ export const Dashboard = () => {
           <Breadcumbs categories={categories} />
         </>
       )}
+      {/* Dashboard page content */}
       <div className="page_container">
         {itemResult && itemResult.length > 0 ? (
           itemResult.map((item) => {

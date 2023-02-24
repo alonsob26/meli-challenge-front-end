@@ -7,10 +7,12 @@ import { Link } from "react-router-dom";
 import { SEO } from "../components/common/SEO";
 
 export const SearchResults = () => {
+  /* useSearchParams hook to get the query params from the url */
   let [searchParams] = useSearchParams();
   let query = searchParams.get("search");
   let category = searchParams.get("category");
   const [searchResult, setSearchResult] = useState({});
+
   useEffect(() => {
     searchItems(category ? `${query}&category=${category}` : query)
       .then((res) => {
@@ -20,8 +22,10 @@ export const SearchResults = () => {
         console.error(err);
       });
   }, [category, query, searchParams]);
+
   return (
     <>
+      {/* SEO and Breadcumbs components  */}
       {searchResult.categories && searchResult.categories.length > 0 && (
         <>
           <SEO
@@ -35,6 +39,7 @@ export const SearchResults = () => {
           <Breadcumbs categories={searchResult.categories} />
         </>
       )}
+      {/* SearchResults page content */}
       <div className="page_container">
         {searchResult.items && searchResult.items.length > 0 ? (
           searchResult.items.map((item) => {

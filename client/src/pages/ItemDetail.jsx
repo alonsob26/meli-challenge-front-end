@@ -7,6 +7,7 @@ import notFoundImg from "../assets/404.png";
 import { SEO } from "../components/common/SEO";
 
 export const ItemDetail = () => {
+  /* useParams hook to get the id value from the url */
   const { id } = useParams();
   const [item, setItem] = useState({});
   const [itemPriceInfo, setItemPriceInfo] = useState({
@@ -14,6 +15,7 @@ export const ItemDetail = () => {
     decimals: 0,
     shipping: false,
   });
+
   useEffect(() => {
     getItem(id)
       .then((res) => {
@@ -31,6 +33,7 @@ export const ItemDetail = () => {
 
   return (
     <>
+      {/* SEO and Breadcumbs components  */}
       {item.path_from_root && (
         <>
           <SEO
@@ -42,6 +45,7 @@ export const ItemDetail = () => {
           <Breadcumbs categories={item.path_from_root} />
         </>
       )}
+      {/* ItemDetail page content */}
       <div className="page_container">
         {item.id ? (
           <>
