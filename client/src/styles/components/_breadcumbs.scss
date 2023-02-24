@@ -10,6 +10,10 @@
       display: none;
     }
   }
+
+  @include breakpoint("xs") {
+    margin-left: 20px;
+  }
 }
 
 .breadcumb_link {

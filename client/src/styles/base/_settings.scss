@@ -1,3 +1,4 @@
+//Colors
 $yellow: #ffe600;
 $black: #333333;
 $darkGray: #666666;
@@ -6,6 +7,39 @@ $lightGray: #eeeeee;
 $blue: #3483fa;
 $white: #ffffff;
 
+//breakpoints
+$breakPoints: (
+  "xs": 0,
+  "sm": 320px,
+  "md": 480px,
+  "lg": 768px,
+  "xl": 1200px,
+);
+/*
+
+@include breakpoint("xs") {
+}
+@include breakpoint("sm") {
+}
+@include breakpoint("md") {
+}
+@include breakpoint("lg") {
+  }
+
+*/
+
+//mixins
+@mixin breakpoint($breakpoint) {
+  @if map-has-key($breakPoints, $breakpoint) {
+    @media (min-width: map-get($breakPoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @error "Unknown breakpoint: #{$breakpoint}";
+  }
+}
+
+//layer
 body {
   height: 100vh;
   width: 100vw;

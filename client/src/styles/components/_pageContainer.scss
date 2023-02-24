@@ -12,4 +12,13 @@
       display: none;
     }
   }
+
+  @include breakpoint("lg") {
+  }
+  @include breakpoint("md") {
+  }
+  @include breakpoint("sm") {
+  }
+  @include breakpoint("xs") {
+  }
 }

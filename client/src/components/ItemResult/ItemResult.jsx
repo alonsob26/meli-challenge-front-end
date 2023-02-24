@@ -20,7 +20,7 @@ const ItemResult = ({ ...props }) => {
           <div className="item_title">{props.title}</div>
         </div>
         <div className="item_seller_container">
-          <div className="item_seller">{props.seller}</div>
+          <span>{props.seller}</span>
         </div>
       </div>
       <div className="item_divider">
