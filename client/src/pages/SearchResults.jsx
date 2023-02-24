@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { SEO } from "../components/common/SEO";
 import { PageContainer } from "../components/common/PageContainer";
 import { ItemNotFound } from "../components/common/ItemNotFound";
+import { Spinner } from "../components/common/Spinner";
 
 /* Este componente renderiza la pagina de resultados de busqueda */
 
@@ -16,19 +17,29 @@ export const SearchResults = () => {
   let query = searchParams.get("search");
   let category = searchParams.get("category");
   const [searchResult, setSearchResult] = useState({});
+  const [loading, setLoading] = useState(true);
+
+  const fetchItems = async () => {
+    setLoading(true);
+    try {
+      const res = await searchItems(
+        category ? `${query}&category=${category}` : query
+      );
+      if (res.data.error) {
+        return;
+      }
+      setSearchResult(res.data);
+    } catch (err) {
+      console.error(err);
+    }
+    setLoading(false);
+  };
 
   useEffect(() => {
-    searchItems(category ? `${query}&category=${category}` : query)
-      .then((res) => {
-        if (res.data.error) {
-          return;
-        }
-        setSearchResult(res.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, [category, query, searchParams]);
+    fetchItems();
+  }, [searchParams]);
+
+  if (loading) return <Spinner />;
 
   return (
     <>
@@ -48,29 +59,27 @@ export const SearchResults = () => {
       )}
       {/* SearchResults page content */}
       <PageContainer>
-        {searchResult.items && searchResult.items.length > 0 ? (
-          searchResult.items.map((item) => {
-            return (
-              <Link
-                className="searchResults_link"
-                key={item.id}
-                to={`/items/${item.id}`}
-              >
-                <ItemResult
+        {searchResult.items && searchResult.items.length > 0
+          ? searchResult.items.map((item) => {
+              return (
+                <Link
+                  className="searchResults_link"
                   key={item.id}
-                  decimals={item.price.decimals}
-                  picture={item.picture}
-                  price={item.price.amount}
-                  seller={item.location}
-                  shipping={item.free_shipping}
-                  title={item.title}
-                />
-              </Link>
-            );
-          })
-        ) : (
-          <ItemNotFound />
-        )}
+                  to={`/items/${item.id}`}
+                >
+                  <ItemResult
+                    key={item.id}
+                    decimals={item.price.decimals}
+                    picture={item.picture}
+                    price={item.price.amount}
+                    seller={item.location}
+                    shipping={item.free_shipping}
+                    title={item.title}
+                  />
+                </Link>
+              );
+            })
+          : !loading && <ItemNotFound />}
       </PageContainer>
     </>
   );

@@ -25,7 +25,6 @@ export const SEO = ({ ...props }) => {
         <meta
           name="description"
           charSet="utf-8"
-          //TODO: separar todos los nombres de los productos con una coma cuando exista un espacio en blanco
           content={
             "En Mercado Libre encontrarás todo lo que buscas. Descubre la mejor forma de comprar online."
           }

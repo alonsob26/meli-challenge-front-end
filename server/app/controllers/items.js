@@ -30,7 +30,6 @@ const getItems = async (req, res) => {
 const getItem = async (req, res) => {
   try {
     const item = await fetchUrl(`${apis.getItem}${req.params.id}`);
-    console.log(item);
     if (Object.keys(item).length > 0 && !item.error) {
       const parseResponse = await parseItemDetail(item);
       const itemDescription = await fetchUrl(

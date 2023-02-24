@@ -7,6 +7,7 @@ import notFoundImg from "../assets/404.png";
 import { SEO } from "../components/common/SEO";
 import { PageContainer } from "../components/common/PageContainer";
 import { ItemNotFound } from "../components/common/ItemNotFound";
+import { Spinner } from "../components/common/Spinner";
 
 /* Este componente renderiza el detalle de los productos individualmente */
 
@@ -19,24 +20,29 @@ export const ItemDetail = () => {
     decimals: 0,
     shipping: false,
   });
+  const [loading, setLoading] = useState(true);
+
+  const fetchItem = async () => {
+    setLoading(true);
+    const res = await getItem(id);
+    if (res.data.length === 0) {
+      setLoading(false);
+      return;
+    }
+    setItem(res.data.item);
+    setItemPriceInfo({
+      price: res.data.item.price.amount,
+      decimals: res.data.item.price.decimals,
+      shipping: res.data.item.free_shipping,
+    });
+    setLoading(false);
+  };
 
   useEffect(() => {
-    getItem(id)
-      .then((res) => {
-        if (res.data.length === 0) {
-          return;
-        }
-        setItem(res.data.item);
-        setItemPriceInfo({
-          price: res.data.item.price.amount,
-          decimals: res.data.item.price.decimals,
-          shipping: res.data.item.free_shipping,
-        });
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    fetchItem();
   }, [id]);
+
+  if (loading) return <Spinner />;
 
   return (
     <>
@@ -86,7 +92,7 @@ export const ItemDetail = () => {
             </div>
           </>
         ) : (
-          <ItemNotFound />
+          !loading && <ItemNotFound />
         )}
       </PageContainer>
     </>
