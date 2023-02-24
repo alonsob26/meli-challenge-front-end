@@ -2,6 +2,8 @@ import PropTypes from "prop-types";
 import { ItemPrice } from "../common/ItemPrice";
 import notFoundImg from "../../assets/404.png";
 
+/* componente para retornar un producto en la pagina de busqueda */
+
 export const ItemResult = ({ ...props }) => {
   return (
     <div className="item_result_container">

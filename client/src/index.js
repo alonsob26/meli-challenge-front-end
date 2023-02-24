@@ -4,11 +4,12 @@ import App from "./App";
 import "./styles/styles.scss";
 import { HelmetProvider } from "react-helmet-async";
 
+/* render principal, utilizando helmet provider para mejorar el SEO
+de nuestras paginas */
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <HelmetProvider>
-      <App />
-    </HelmetProvider>
-  </React.StrictMode>
+  <HelmetProvider>
+    <App />
+  </HelmetProvider>
 );

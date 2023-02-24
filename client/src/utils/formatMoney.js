@@ -1,3 +1,6 @@
+/* Funciones necesarias para el funcionamiento de la app */
+
+/* funcion para darle formato al precio de los productos */
 export const formatMoney = ({ price }) => {
   const options = {
     minimumFractionDigits: 3,

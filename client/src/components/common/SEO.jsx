@@ -1,7 +1,9 @@
-import React from "react";
 import { Helmet } from "react-helmet-async";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
+
+/* componente para añadir informacion meta a cada 
+pagina para mejorar el SEO */
 
 export const SEO = ({ ...props }) => {
   const location = useLocation();
@@ -23,7 +25,6 @@ export const SEO = ({ ...props }) => {
         <meta
           name="description"
           charSet="utf-8"
-          //TODO: separar todos los nombres de los productos con una coma cuando exista un espacio en blanco
           content={
             "En Mercado Libre encontrarás todo lo que buscas. Descubre la mejor forma de comprar online."
           }
