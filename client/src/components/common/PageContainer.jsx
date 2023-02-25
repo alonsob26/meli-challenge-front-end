@@ -1,5 +1,3 @@
-import PropTypes from "prop-types";
-
 /* Componente contenedor de las paginas */
 
 const PageContainer = ({ children }) => {
@@ -8,10 +6,6 @@ const PageContainer = ({ children }) => {
       {children}
     </div>
   );
-};
-
-PageContainer.propTypes = {
-  children: PropTypes.node.isRequired,
 };
 
 export default PageContainer;
