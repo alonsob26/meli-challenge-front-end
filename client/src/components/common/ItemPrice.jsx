@@ -19,9 +19,7 @@ const ItemPrice = ({ props, styles }) => {
 };
 
 ItemPrice.propTypes = {
-  price: PropTypes.number.isRequired,
-  decimals: PropTypes.number.isRequired,
-  shipping: PropTypes.bool.isRequired,
+  props: PropTypes.object.isRequired,
   styles: PropTypes.string.isRequired,
 };
 
