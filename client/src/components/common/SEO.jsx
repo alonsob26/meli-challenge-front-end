@@ -1,11 +1,12 @@
 import { Helmet } from "react-helmet-async";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 
 /* componente para añadir informacion meta a cada 
 pagina para mejorar el SEO */
 
-export const SEO = ({ ...props }) => {
+const SEO = ({ ...props }) => {
   const location = useLocation();
   const [query, setQuery] = useState();
 
@@ -32,7 +33,7 @@ export const SEO = ({ ...props }) => {
         <meta
           name="keywords"
           charSet="utf-8"
-          content={props.keywords + "comprar, vender, mercado libre"}
+          content={props.keywords.join() + "comprar, vender, mercado libre"}
         />
         <meta name="robots" content="index, follow" />
         <meta name="author" content="Mercado Libre" />
@@ -75,3 +76,10 @@ export const SEO = ({ ...props }) => {
     </>
   );
 };
+
+SEO.propTypes = {
+  title: PropTypes.string.isRequired,
+  keywords: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
+
+export default SEO;
