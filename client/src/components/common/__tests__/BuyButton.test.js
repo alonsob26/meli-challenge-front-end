@@ -1,5 +1,9 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, cleanup } from "@testing-library/react";
 import { BuyButton } from "../index";
+
+afterEach(() => {
+  cleanup();
+});
 
 test("should render buybutton", () => {
   render(<BuyButton />);

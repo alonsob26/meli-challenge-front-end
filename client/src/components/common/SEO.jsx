@@ -7,6 +7,7 @@ import PropTypes from "prop-types";
 pagina para mejorar el SEO */
 
 const SEO = ({ ...props }) => {
+  const { title, keywords } = props;
   const location = useLocation();
   const [query, setQuery] = useState();
 
@@ -78,8 +79,10 @@ const SEO = ({ ...props }) => {
 };
 
 SEO.propTypes = {
-  title: PropTypes.string.isRequired,
-  keywords: PropTypes.arrayOf(PropTypes.string).isRequired,
+  props: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    keywords: PropTypes.array.isRequired,
+  }),
 };
 
 export default SEO;
