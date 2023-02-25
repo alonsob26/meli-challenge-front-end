@@ -3,7 +3,7 @@ import { BuyButton, ItemPrice } from "../common/index";
 
 const ItemDetailInfo = ({ condition, sold_quantity, title, price_info }) => {
   return (
-    <div className="item_detail_info_container">
+    <div data-testid="item-detail-info" className="item_detail_info_container">
       <span className="condition_quantity">
         {condition === "new" ? "Nuevo" : condition} - {sold_quantity} vendidos
       </span>
@@ -18,7 +18,11 @@ ItemDetailInfo.propTypes = {
   condition: propTypes.string.isRequired,
   sold_quantity: propTypes.number.isRequired,
   title: propTypes.string.isRequired,
-  price_info: propTypes.object.isRequired,
+  price_info: propTypes.shape({
+    shipping: propTypes.bool.isRequired,
+    price: propTypes.number.isRequired,
+    decimals: propTypes.number.isRequired,
+  }).isRequired,
 };
 
 export default ItemDetailInfo;

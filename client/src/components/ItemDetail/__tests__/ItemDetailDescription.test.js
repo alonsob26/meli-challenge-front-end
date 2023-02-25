@@ -14,7 +14,7 @@ test("should render ItemDetailDescription", () => {
 });
 
 test("el componente no tiene descripcion", () => {
-  const description = undefined;
+  const description = "";
   render(<ItemDetailDescription description={description} />);
   const component = screen.getByTestId("item-detail-description");
   expect(component).toBeInTheDocument();

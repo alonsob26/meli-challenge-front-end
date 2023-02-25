@@ -5,6 +5,7 @@ const ItemDetailImg = ({ picture, title }) => {
   return (
     <div className="item_detail_img">
       <img
+        data-testid="item-detail-img"
         src={picture === "" ? notFoundImg : picture}
         alt="item_img"
         title={title}

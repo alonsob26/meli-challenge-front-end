@@ -21,7 +21,7 @@ const SEO = ({ ...props }) => {
     <>
       <Helmet>
         <title>
-          {props.title} | {process.env.REACT_APP_DOMAIN}
+          {title} | {process.env.REACT_APP_DOMAIN}
         </title>
         <link rel="canonical" href={location.pathname} />
         <meta
@@ -34,7 +34,7 @@ const SEO = ({ ...props }) => {
         <meta
           name="keywords"
           charSet="utf-8"
-          content={props.keywords.join() + "comprar, vender, mercado libre"}
+          content={keywords.join() + "comprar, vender, mercado libre"}
         />
         <meta name="robots" content="index, follow" />
         <meta name="author" content="Mercado Libre" />
