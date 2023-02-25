@@ -2,6 +2,18 @@
   display: flex;
   flex-direction: row;
   margin: 32px;
+
+  @include breakpoint("xs") {
+    flex-direction: column;
+  }
+
+  @include breakpoint("md") {
+    flex-direction: column;
+  }
+
+  @include breakpoint("lg") {
+    flex-direction: row;
+  }
 }
 
 .item_detail_price {
@@ -9,9 +21,11 @@
   flex-direction: row;
   justify-content: left;
   width: 100%;
-  font-size: 2.875rem;
   margin-bottom: 32px;
   color: $black;
+  > span {
+    font-size: 2.875rem;
+  }
   > span:last-of-type {
     font-size: 1.6rem;
     margin-top: 5px;
@@ -22,5 +36,13 @@
     height: 30px;
     margin-left: 20px;
     margin-top: 10px;
+  }
+
+  @include breakpoint("xs") {
+    justify-content: center;
+  }
+
+  @include breakpoint("md") {
+    justify-content: left;
   }
 }

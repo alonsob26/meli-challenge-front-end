@@ -2,7 +2,7 @@
   width: 100%;
   display: flex;
   justify-content: flex-start;
-  margin-top: 16px;
+  margin-top: 75px;
   font-size: 0.875rem;
   color: $gray;
   a:last-of-type {
@@ -12,7 +12,20 @@
   }
 
   @include breakpoint("xs") {
+    //show only the first element in the div
+    a:nth-of-type(n + 2) {
+      display: none;
+    }
     margin-left: 20px;
+    font-size: 0.8rem;
+  }
+
+  @include breakpoint("lg") {
+    a:nth-of-type(n + 2) {
+      display: flex;
+    }
+    margin-left: 20px;
+    font-size: 0.875rem;
   }
 }
 

@@ -6,7 +6,7 @@ const ItemNotFound = () => {
   return (
     <div className="itemNotFound">
       <h1>Producto no encontrado</h1>
-      <img className="itemNotFound__icon" src={itemNotFound} alt="notFound" />
+      <img src={itemNotFound} alt="notFound" />
     </div>
   );
 };

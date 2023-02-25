@@ -14,4 +14,16 @@
   font-weight: 600;
   border: none;
   cursor: pointer;
+
+  @include breakpoint("xs") {
+    width: 100%;
+  }
+
+  @include breakpoint("md") {
+    width: 100%;
+  }
+
+  @include breakpoint("lg") {
+    width: 50%;
+  }
 }

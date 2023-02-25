@@ -15,18 +15,6 @@ $breakPoints: (
   "lg": 768px,
   "xl": 1200px,
 );
-/*
-
-@include breakpoint("xs") {
-}
-@include breakpoint("sm") {
-}
-@include breakpoint("md") {
-}
-@include breakpoint("lg") {
-  }
-
-*/
 
 //mixins
 @mixin breakpoint($breakpoint) {

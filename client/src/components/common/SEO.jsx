@@ -33,7 +33,7 @@ const SEO = ({ ...props }) => {
         <meta
           name="keywords"
           charSet="utf-8"
-          content={props.keywords + "comprar, vender, mercado libre"}
+          content={props.keywords.join() + "comprar, vender, mercado libre"}
         />
         <meta name="robots" content="index, follow" />
         <meta name="author" content="Mercado Libre" />
@@ -79,7 +79,7 @@ const SEO = ({ ...props }) => {
 
 SEO.propTypes = {
   title: PropTypes.string.isRequired,
-  keywords: PropTypes.string.isRequired,
+  keywords: PropTypes.array.isRequired,
 };
 
 export default SEO;
