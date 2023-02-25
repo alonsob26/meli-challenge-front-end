@@ -31,7 +31,7 @@ const Dashboard = () => {
   if (loading) return <Spinner />;
 
   return (
-    <>
+    <div data-testid="dashboard">
       {/* SEO and Breadcrumbs components  */}
       {categories && (
         <>
@@ -68,7 +68,7 @@ const Dashboard = () => {
             })
           : !loading && <ItemNotFound />}
       </PageContainer>
-    </>
+    </div>
   );
 };
 

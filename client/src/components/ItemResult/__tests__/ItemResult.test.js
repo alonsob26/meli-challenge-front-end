@@ -11,8 +11,8 @@ test("should render ItemResult", () => {
       "https://http2.mlstatic.com/D_NQ_NP_2X_858858-MLA31000000000_072019-O.webp",
     title: "Producto test",
     seller: "Vendedor test",
-    price: "1000",
-    decimals: "00",
+    price: 1000,
+    decimals: 0,
     shipping: true,
   };
   render(<ItemResult {...params} />);

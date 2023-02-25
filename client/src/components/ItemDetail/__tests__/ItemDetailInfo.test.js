@@ -9,8 +9,8 @@ test("should render ItemDetailInfo", () => {
   const params = {
     title: "Producto test",
     price_info: {
-      currency: "ARS",
-      amount: 1000,
+      shipping: true,
+      price: 1000,
       decimals: 0,
     },
     condition: "new",
