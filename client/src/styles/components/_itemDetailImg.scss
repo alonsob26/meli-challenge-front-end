@@ -1,0 +1,25 @@
+.item_detail_img {
+  > img {
+    aspect-ratio: 1;
+    width: 680px;
+    object-fit: contain;
+  }
+
+  @include breakpoint("xs") {
+    > img {
+      width: 100%;
+    }
+  }
+
+  @include breakpoint("md") {
+    > img {
+      width: 400px;
+    }
+  }
+
+  @include breakpoint("xl") {
+    > img {
+      width: 680px;
+    }
+  }
+}

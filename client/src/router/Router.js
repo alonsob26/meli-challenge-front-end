@@ -4,10 +4,8 @@ import {
   Route,
 } from "react-router-dom";
 import { getItems } from "../services/items";
-import { Layout } from "../components/Layout/Layout";
-import { Dashboard } from "../pages/Dashboard";
-import { ItemDetail } from "../pages/ItemDetail";
-import { SearchResults } from "../pages/SearchResults";
+import { Layout } from "../components/Layout/index";
+import { Dashboard, ItemDetail, SearchResults } from "../pages/index";
 
 /* componente de ruteo para la app */
 

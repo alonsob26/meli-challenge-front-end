@@ -1,9 +1,9 @@
-import { Search } from "./SearchItems";
+import SearchInput from "./SearchInput";
 import logo_ml from "../../assets/Logo_ML.png";
 
 /* Componente para renderizar el header de la pagina (buscador) */
 
-export const Header = () => {
+const Header = () => {
   return (
     <div className="searchHeader_container">
       <div>
@@ -15,8 +15,10 @@ export const Header = () => {
             title="https://www.mercadolibre.com/"
           />
         </a>
-        <Search />
+        <SearchInput />
       </div>
     </div>
   );
 };
+
+export default Header;

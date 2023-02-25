@@ -2,14 +2,18 @@
 @import "base/settings";
 
 //Components.
-@import "components/searchHeader";
-@import "components/searchItems";
+@import "components/header";
+@import "components/searchInput";
 @import "components/layout";
 @import "components/breadcumbs";
 @import "components/itemResult";
 @import "components/pageContainer";
 @import "components/itemNotFound";
 @import "components/spinner";
+@import "components/itemDetailImg";
+@import "components/itemDetailInfo";
+@import "components/itemDetailDescription";
+@import "components/buyButton";
 
 //Screens.
 @import "pages/dashboard";

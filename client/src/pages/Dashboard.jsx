@@ -1,16 +1,18 @@
 import { useLoaderData } from "react-router-dom";
-import { Breadcumbs } from "../components/Layout/Breadcumbs";
-import { ItemResult } from "../components/ItemResult/ItemResult";
+import { Breadcrumbs } from "../components/Layout/index";
+import { ItemResult } from "../components/ItemResult/index";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { SEO } from "../components/common/SEO";
-import { PageContainer } from "../components/common/PageContainer";
-import { ItemNotFound } from "../components/common/ItemNotFound";
-import { Spinner } from "../components/common/Spinner";
+import {
+  SEO,
+  PageContainer,
+  ItemNotFound,
+  Spinner,
+} from "../components/common/index";
 
 /* Este componente renderiza la pagina inicial de la app */
 
-export const Dashboard = () => {
+const Dashboard = () => {
   /* useLoaderData hook to get the data from the loader route "getItems()" in client/src/router */
   const items = useLoaderData();
   const [itemResult, setItemResult] = useState();
@@ -30,7 +32,7 @@ export const Dashboard = () => {
 
   return (
     <>
-      {/* SEO and Breadcumbs components  */}
+      {/* SEO and Breadcrumbs components  */}
       {categories && (
         <>
           <SEO
@@ -39,7 +41,7 @@ export const Dashboard = () => {
               return category.name;
             })}
           />
-          <Breadcumbs categories={categories} />
+          <Breadcrumbs categories={categories} />
         </>
       )}
       {/* Dashboard page content */}
@@ -69,3 +71,5 @@ export const Dashboard = () => {
     </>
   );
 };
+
+export default Dashboard;
