@@ -79,7 +79,7 @@ const SEO = ({ ...props }) => {
 
 SEO.propTypes = {
   title: PropTypes.string.isRequired,
-  keywords: PropTypes.array.isRequired,
+  keywords: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default SEO;

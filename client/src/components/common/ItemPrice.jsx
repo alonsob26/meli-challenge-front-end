@@ -19,7 +19,11 @@ const ItemPrice = ({ props, styles }) => {
 };
 
 ItemPrice.propTypes = {
-  props: PropTypes.object.isRequired,
+  props: PropTypes.shape({
+    decimals: PropTypes.number.isRequired,
+    price: PropTypes.number.isRequired,
+    shipping: PropTypes.bool.isRequired,
+  }).isRequired,
   styles: PropTypes.string.isRequired,
 };
 

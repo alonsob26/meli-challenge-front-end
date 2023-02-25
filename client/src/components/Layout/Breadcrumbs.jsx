@@ -26,7 +26,12 @@ const Breadcrumbs = ({ categories }) => {
 };
 
 Breadcrumbs.propTypes = {
-  categories: PropTypes.array.isRequired,
+  categories: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };
 
 export default Breadcrumbs;
