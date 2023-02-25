@@ -10,7 +10,9 @@ const ItemPrice = ({ props, styles }) => {
       <span>{`$ ${formatMoney({
         price: props.price,
       })}`}</span>
-      <span>{props.decimals === 0 ? "00" : props.decimals}</span>
+      <span>
+        {props.decimals === 0 ? "00" : String(props.decimals).padEnd(2, "0")}
+      </span>
       {props.shipping && (
         <img src={shipping_logo} alt="shipping" title="shipping" />
       )}
