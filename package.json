@@ -1,0 +1,30 @@
+{
+  "name": "meli-challenge-front-end",
+  "version": "1.0.0",
+  "description": "This is a test challenge front-end Mercado Libre",
+  "main": "index.js",
+  "private": true,
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "install:modules": "concurrently \"npm install --workspace=server\" \"npm install --workspace=client\"",
+    "start": "concurrently \"npm run dev start --workspace=server\" \"npm run start --workspace=client\"",
+    "test:client": "npm run test --workspace=client",
+    "build:client": "npm run build --workspace=client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alonsob26/meli-challenge-front-end.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alonsob26/meli-challenge-front-end/issues"
+  },
+  "homepage": "https://github.com/alonsob26/meli-challenge-front-end#readme",
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
+}
