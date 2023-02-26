@@ -13,7 +13,8 @@
     "start": "concurrently \"npm run dev start --workspace=server\" \"npm run start --workspace=client\"",
     "test:client": "npm run test --workspace=client",
     "build:client": "npm run build --workspace=client",
-    "test:server": "npm run test --workspace=server"
+    "test:server": "npm run test --workspace=server",
+    "test": "npm run test:client && npm run test:server"
   },
   "repository": {
     "type": "git",
