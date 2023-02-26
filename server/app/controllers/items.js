@@ -19,7 +19,7 @@ const getItems = async (req, res) => {
       parseResponse.categories = categoryNames;
       res.status(200).send({ status: 200, data: parseResponse });
     } else {
-      res.status(200).send({ status: 200, data: [] });
+      res.status(500).send({ status: 500, data: [] });
     }
   } catch (error) {
     httpError(res, error);
@@ -38,7 +38,7 @@ const getItem = async (req, res) => {
       (parseResponse.item.description = itemDescription.plain_text),
         res.status(200).send({ status: 200, data: parseResponse });
     } else {
-      res.status(200).send({ status: 200, data: [] });
+      res.status(500).send({ status: 500, data: [] });
     }
   } catch (error) {
     httpError(res, error);
