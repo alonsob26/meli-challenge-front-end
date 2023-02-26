@@ -7,6 +7,8 @@ const saludar = () => {
 const BuyButton = () => {
   return (
     <button
+      data-testid="buy-button"
+      type="button"
       className="buy_button"
       onClick={() => {
         saludar();

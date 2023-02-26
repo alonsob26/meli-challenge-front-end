@@ -5,9 +5,9 @@ import logo_ml from "../../assets/Logo_ML.png";
 
 const Header = () => {
   return (
-    <div className="searchHeader_container">
+    <div data-testid="header" className="searchHeader_container">
       <div>
-        <a href="https://www.mercadolibre.com/">
+        <a data-testid="meli-link" href="https://www.mercadolibre.com/">
           <img
             className="searchHeader_logoML"
             src={logo_ml}

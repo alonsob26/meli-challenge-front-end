@@ -1,7 +1,7 @@
 import { RouterProvider, createMemoryRouter } from "react-router-dom";
 import { render, waitFor, screen, cleanup } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import Dashboard from "./pages/Dashboard";
+import SearchResults from "../SearchResults";
 import { HelmetProvider } from "react-helmet-async";
 
 HelmetProvider.canUseDOM = false;
@@ -19,22 +19,38 @@ afterEach(() => {
   cleanup();
 });
 
-//this test not need msw because the loader is a fake function
-//will render dashboard initialy
-test("should go to Dashboard page without items", async () => {
+test("should go to SearchResult page without items", async () => {
   const FAKE_EVENT = { name: "Producto no encontrado" };
   const routes = [
     {
-      path: "/",
-      element: <Dashboard />,
+      path: "/items",
+      element: <SearchResults />,
       loader: () => FAKE_EVENT,
     },
   ];
   const router = createMemoryRouter(routes, {
-    initialEntries: ["/"],
+    initialEntries: [
+      "/items?search=OnlyNeedSomeRareStringToReturnNotFoundItemsIfHaveErrorFromBackendWillShowDefaultItems",
+    ],
   });
 
   render(<RouterProvider router={router} />);
   await waitFor(() => screen.findByTestId("not-found"));
   expect(screen.getByTestId("not-found")).toBeTruthy();
+});
+
+test("should go to SearchResult page with items result", async () => {
+  const routes = [
+    {
+      path: "/items",
+      element: <SearchResults />,
+    },
+  ];
+  const router = createMemoryRouter(routes, {
+    initialEntries: ["/items?search=patineta"],
+  });
+
+  render(<RouterProvider router={router} />);
+  await waitFor(() => screen.findAllByTestId("item-result"));
+  expect(screen.getAllByTestId("item-result")).toBeTruthy();
 });

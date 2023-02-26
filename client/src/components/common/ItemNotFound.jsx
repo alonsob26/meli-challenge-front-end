@@ -4,7 +4,7 @@ import itemNotFound from "../../assets/img_itemNotFound.png";
 
 const ItemNotFound = () => {
   return (
-    <div className="itemNotFound">
+    <div data-testid="not-found" className="itemNotFound">
       <h1>Producto no encontrado</h1>
       <img src={itemNotFound} alt="notFound" />
     </div>
