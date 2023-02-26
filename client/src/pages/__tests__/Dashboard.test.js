@@ -7,7 +7,7 @@ import { HelmetProvider } from "react-helmet-async";
 HelmetProvider.canUseDOM = false;
 
 /**
- * Mock helmet module
+ * Mock helmet module to avoid error
  */
 
 jest.mock("react-helmet-async", () => ({
@@ -34,8 +34,8 @@ test("should go to Dashboard page without items", async () => {
   });
 
   render(<RouterProvider router={router} />);
-  await waitFor(() => screen.findAllByRole("heading"));
-  expect(screen.getByRole("heading")).toHaveTextContent(FAKE_EVENT.name);
+  await waitFor(() => screen.findByTestId("not-found"));
+  expect(screen.getByTestId("not-found")).toBeTruthy();
 });
 
 //this test works because the loader is a fake function and not need msw
