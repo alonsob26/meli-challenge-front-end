@@ -6,7 +6,7 @@ donde se muestran las paginas */
 
 const Layout = () => {
   return (
-    <div className="layout_container">
+    <div data-testid="layout" className="layout_container">
       <Header />
       <main className="layout_main">
         <div className="outlet_container">

@@ -7,6 +7,7 @@ import PropTypes from "prop-types";
 pagina para mejorar el SEO */
 
 const SEO = ({ ...props }) => {
+  const { title, keywords } = props;
   const location = useLocation();
   const [query, setQuery] = useState();
 
@@ -20,7 +21,7 @@ const SEO = ({ ...props }) => {
     <>
       <Helmet>
         <title>
-          {props.title} | {process.env.REACT_APP_DOMAIN}
+          {title} | {process.env.REACT_APP_DOMAIN}
         </title>
         <link rel="canonical" href={location.pathname} />
         <meta
@@ -33,7 +34,7 @@ const SEO = ({ ...props }) => {
         <meta
           name="keywords"
           charSet="utf-8"
-          content={props.keywords.join() + "comprar, vender, mercado libre"}
+          content={keywords.join() + "comprar, vender, mercado libre"}
         />
         <meta name="robots" content="index, follow" />
         <meta name="author" content="Mercado Libre" />
@@ -78,8 +79,10 @@ const SEO = ({ ...props }) => {
 };
 
 SEO.propTypes = {
-  title: PropTypes.string.isRequired,
-  keywords: PropTypes.arrayOf(PropTypes.string).isRequired,
+  props: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    keywords: PropTypes.array.isRequired,
+  }),
 };
 
 export default SEO;

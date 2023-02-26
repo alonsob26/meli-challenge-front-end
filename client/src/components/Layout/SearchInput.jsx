@@ -28,14 +28,19 @@ const SearchInput = () => {
   }
 
   return (
-    <form className="searchItems_form" onSubmit={handleSubmit(onSubmit)}>
+    <form
+      data-testid="searchInput"
+      className="searchItems_form"
+      onSubmit={handleSubmit(onSubmit)}
+    >
       <input
+        data-testid="searchInput-input"
         {...register("searchValue")}
         className="searchItems_input"
         placeholder="Nunca dejes de buscar"
         spellCheck="false"
       />
-      <button className="searchItems_button">
+      <button data-testid="searchInput-button" className="searchItems_button">
         <img
           src={ic_Search}
           alt="search_logo"

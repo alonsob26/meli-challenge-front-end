@@ -5,15 +5,14 @@ import PropTypes from "prop-types";
 /* Componente para renderizar el precio del producto */
 
 const ItemPrice = ({ props, styles }) => {
+  const { price, decimals, shipping } = props;
   return (
-    <div className={styles}>
+    <div data-testid="item-price" className={styles}>
       <span>{`$ ${formatMoney({
-        price: props.price,
+        price,
       })}`}</span>
-      <span>{props.decimals === 0 ? "00" : props.decimals}</span>
-      {props.shipping && (
-        <img src={shipping_logo} alt="shipping" title="shipping" />
-      )}
+      <span>{decimals === 0 ? "00" : String(decimals).padEnd(2, "0")}</span>
+      {shipping && <img src={shipping_logo} alt="shipping" title="shipping" />}
     </div>
   );
 };

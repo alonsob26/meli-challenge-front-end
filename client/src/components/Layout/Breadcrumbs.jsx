@@ -9,7 +9,7 @@ const Breadcrumbs = ({ categories }) => {
     categories.splice(4, categories.length - 4);
   }
   return (
-    <div className="breadcumb_container">
+    <div data-testid="breadcrumbs" className="breadcumb_container">
       {categories.length > 0 &&
         categories.map((category) => (
           <Link
