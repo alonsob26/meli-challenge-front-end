@@ -9,7 +9,6 @@
     "server"
   ],
   "scripts": {
-    "install:modules": "concurrently \"npm install --workspace=server\" \"npm install --workspace=client\"",
     "start": "concurrently \"npm run dev start --workspace=server\" \"npm run start --workspace=client\"",
     "test:client": "npm run test --workspace=client",
     "build:client": "npm run build --workspace=client",
