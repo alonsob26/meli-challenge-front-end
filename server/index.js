@@ -1,3 +1,6 @@
+//cargar variables de entorno
+require("dotenv").config();
+
 const app = require("./app");
 
 //cargar puerto
