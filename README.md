@@ -15,15 +15,15 @@ Este es un monorepo que contiene el challenge técnico de mercado libre (fronten
 
 El proyecto utiliza variables de entorno asi como se muestra en los archivos .env.example:
 
-- Client:
+Client:
 
-  - `REACT_APP_API_URL`=http://localhost:3001/api
-  - `REACT_APP_DOMAIN`=http://localhost:3000
-  - `REACT_APP_DOMAIN_NAME`=localhost:3000
+- `REACT_APP_API_URL`=http://localhost:3001/api
+- `REACT_APP_DOMAIN`=http://localhost:3000
+- `REACT_APP_DOMAIN_NAME`=localhost:3000
 
-- Server:
+Server:
 
-  - `PORT`=3001
+- `PORT`=3001
 
 ## Instalación
 
