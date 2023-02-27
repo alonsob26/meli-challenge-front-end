@@ -17,9 +17,9 @@ El proyecto utiliza variables de entorno asi como se muestra en los archivos .en
 
 client:
 
-`REACT_APP_API_URL`=http://localhost:3001/api
-`REACT_APP_DOMAIN`=http://localhost:3000
-`REACT_APP_DOMAIN_NAME`=localhost:3000
+- `REACT_APP_API_URL`=http://localhost:3001/api
+- `REACT_APP_DOMAIN`=http://localhost:3000
+- `REACT_APP_DOMAIN_NAME`=localhost:3000
 
 server:
 
