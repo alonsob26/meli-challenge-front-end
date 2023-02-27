@@ -1,6 +1,3 @@
-//cargar variables de entorno
-require("dotenv").config();
-
 //cargar express
 const express = require("express");
 
